@@ -1,0 +1,79 @@
+#dayslove {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  margin: 0;
+  color: transparent;
+  font-size: 45px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+#dayslove {
+  animation: textBlink 5s infinite;
+  animation-delay: 2s;
+}
+
+@keyframes textBlink {
+  0% {
+    color: transparent;
+  }
+  20% {
+    color: red;
+  }
+}
+
+.heart {
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+  margin: 0 10px;
+  position: absolute;
+  left: 45%;
+  top: 45%;
+  background-color: red;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  animation: heartbeat 3s infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1) rotate(-45deg);
+  }
+  20% {
+    transform: scale(1.25) rotate(-45deg);
+  }
+  40% {
+    transform: scale(1.5) rotate(-45deg);
+  }
+  60% {
+    transform: scale(1.25) rotate(-45deg);
+  }
+  80% {
+    transform: scale(1.5) rotate(-45deg);
+  }
+  100% {
+    transform: scale(1) rotate(-45deg);
+  }
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -80px;
+  left: 0;
+}
+
+.heart:after {
+  left: 80px;
+  top: 0;
+}
