@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Kiky Page - Arts - Dots</title>
+  <title>Kiky Page - Arts - SpiralDots</title>
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
   <link rel="stylesheet" href="../style.css" />
@@ -22,36 +22,55 @@
         Dots
       </h2>
       <pre>
-          <code class="hljs nim">
-import nimsvg, 
-       os,
-       random
-     
-let settings = animSettings("./" / sourceBaseName(), backAndForth=true)
-let numFrames = 100
-     
-settings.buildAnimation(numFrames) do (i: int) -> Nodes:
-    let size = 500
-    buildSvg:
-        svg(width=size, height=size):
-            for _ in 0 .. 500:
-                let x = random(size)
-                let y = random(size)
-                let radius = random(5)
-                circle(cx=x, cy=y, r=radius, stroke="#00e353", fill="#0b4a22", `fill-opacity`=0.5)
+          <code class="hljs go">
+package main
+
+import (
+    "math"
+    "math/rand"
+            
+    "github.com/fogleman/gg"
+)
+            
+func main() {
+    const S = 1024
+    const N = 2048
+    dc := gg.NewContext(S, S)
+
+    dc.SetRGB(1, 1, 1)
+	  dc.Clear()
+            
+    for i := 0; i <= N; i++ {
+        t := float64(i) / N * 5
+        d := t*S*0.4 + 25
+        a := t * math.Pi * 4 * 100
+        x := S/2 + math.Cos(a)*d
+        y := S/2 + math.Sin(a)*d    
+        for i := 1; i < 20; i += 5 {
+            r := rand.Float64()
+            g := rand.Float64()
+            b := rand.Float64()
+            aa := rand.Float64()
+            dc.SetRGBA(r, g, b, aa) 
+            dc.DrawCircle(x+float64(i), y, 6)
+            dc.Fill()
+        }
+    }
+            
+    dc.SavePNG("spiraldots.png")
+}            
           </code>
       </pre>
       Run: 
       <pre>
           <code class="hljs shell">
-$ nim c main.nim
-$ ./main
-$ magick ./main_frames/*.svg dots.gif
+$ go build
+$ ./spiraldots
           </code>
       </pre>
       Out:<br>
       <figure>
-        <img src="img/dots.gif" width="auto" height="auto">
+        <img src="img/spiraldots.png" width="auto" height="auto">
       </figure>
     </section>
   </div>
