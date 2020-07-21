@@ -38,18 +38,16 @@ settings.buildAnimation(numFrames) do (i: int) -> Nodes:
                 let x = random(size)
                 let y = random(size)
                 let radius = random(5)
-                circle(cx=x, cy=y, r=radius, stroke="#00e353", fill="#0b4a22", `fill-opacity`=0.5)
-          </code>
+                circle(cx=x, cy=y, r=radius, stroke="#00e353", fill="#0b4a22", `fill-opacity`=0.5)</code>
       </pre>
-      Run: 
+      <hr>
       <pre>
           <code class="hljs shell">
 $ nim c main.nim
 $ ./main
-$ magick ./main_frames/*.svg dots.gif
-          </code>
+$ magick ./main_frames/*.svg dots.gif</code>
       </pre>
-      Out:<br>
+      <hr>
       <figure>
         <img src="img/dots.gif" width="auto" height="auto">
       </figure>
