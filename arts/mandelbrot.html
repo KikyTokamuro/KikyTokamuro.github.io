@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kiky Page - Arts - Mandelbrot</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="terminal">
+  <div class="container">
+    <div class="terminal-nav"></div>
+      <div class="terminal-logo">
+        <div class="logo terminal-prompt">
+          <a href="../index.html">./index</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <section>
+      <h2>
+        Mandelbrot
+      </h2>
+      <pre>
+          <code class="hljs go">
+package main
+
+import (
+    "math/cmplx"
+
+    "github.com/fogleman/gg"
+)
+
+func main() {
+    const S = 1024
+    dc := gg.NewContext(S, S)
+
+    xa := -2.0
+    xb := 1.0
+    ya := -1.5
+    yb := 1.5
+
+    for y := 0; y <= S; y++ {
+        zy := float64(y)*(yb-ya)/(S-1) + ya
+
+        for x := 0; x <= S; x++ {
+            zx := float64(x)*(xb-xa)/(S-1) + xa
+            z := complex(zx, zy)
+            c := z
+            a := 0
+
+            for i := 0; i <= 256; i++ {
+                a = i
+                if cmplx.Abs(z) > 2.0 {
+                    break
+                }
+
+                z = z*z + c
+            }
+
+            dc.SetRGB(float64(a%4*64), float64(a%8*32), float64(a%16*16))
+            dc.DrawPoint(float64(x), float64(y), 1)
+            dc.Fill()
+        }
+
+    }
+
+    dc.SavePNG("mandelbrot.png")
+}</code>
+      </pre>
+      <hr>
+      <pre>
+        <code class="hljs shell">
+$ go build
+$ ./mandelbrot</code>
+      </pre>
+      <hr>
+      <figure>
+        <img src="img/mandelbrot.png" width="auto" height="auto">
+      </figure>
+    </section>
+  </div>
+  <link rel="stylesheet" href="https:/cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <link rel="stylesheet" href="code.css" />
+</body>
+</html>
