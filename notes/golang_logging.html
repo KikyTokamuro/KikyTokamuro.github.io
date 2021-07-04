@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Golang заметки - Журналирование</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body class="terminal">
+  <div class="container">
+    <div class="terminal-nav">
+      <div class="terminal-logo">
+        <div class="logo terminal-prompt">
+          <a href="../index.html">./index</a>
+        </div>
+      </div>
+      <nav class="terminal-menu">
+        <ul>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="https://www.buymeacoffee.com/KikyTokamuro" class="bmc-button" target="_blank" property="item" typeof="WebPage" class="menu-item">
+              <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px;font-size:19px !important;">Buy me a coffee</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="container">
+    <section>
+      <h2>
+        Golang заметки - Журналирование - 20.06.2020
+      </h2>
+      <p>
+        Простейшее использование пакета log. Сообщения пишутся в os.Stderr:
+        <pre>
+            <code class="hljs">
+package main
+
+import (
+	"log"
+)
+
+func main() {
+	log.Println("Test message")
+	log.Fatal("Fatal message") // будет выход с кодом ошибки
+}</code>
+        </pre>
+        <br>
+        Журналирование с использование log.Logger, он поддерживает функции передачи данных любому объекту io.Writer, способен работать с файлами и сетевыми подключениями:
+        <pre>
+            <code class="hljs">
+package main
+
+import (
+	"log"
+	"os"
+)
+
+func main() {
+	logfile, _ := os.Create("./test.log")
+	defer logfile.Close()
+	logger := log.New(logfile, "Prefix ", log.LstdFlags|log.Llongfile)
+	logger.Println("Test message")
+	logger.Fataln("Fatal message")
+}</code>
+        </pre>
+        <br>
+        <img src="../img/golang_logging.png">
+        <br><br>
+        Пример простого журналирования с записью в сетевой сокет:
+        <pre>
+            <code class="hljs">
+package main
+
+import (
+	"log"
+	"net"
+)
+
+func main() {
+	conn, err := net.Dial("tcp", "localhost:8080")
+	
+	if err != nil {
+		panic("Failed to connect to localhost:8080")
+	}
+	defer conn.Close()
+	
+	logger := log.New(conn, "log: ", log.LstdFlags|log.Llongfile)
+	logger.Println("Test log message")
+}</code>
+        </pre>
+        <br>
+        Запись сообщений в системный журнал, с помощью log/syslog:
+        <pre>
+            <code class="hljs">
+package main
+
+import (
+	"fmt"
+	"log"
+	"log/syslog"
+)
+
+func main() {
+	priority := syslog.LOG_LOCAL3 | syslog.LOG_NOTICE
+	flags := log.Ldate | log.Lshortfile
+	
+	logger, err := syslog.NewLogger(priority, flags)
+	if err != nil {
+		fmt.Printf("Can't attach to syslog: %s", err)
+		return
+	}
+	
+	logger.Println("This is a test log message.")
+}
+
+// июн 19 00:55:52 kiky-aspire /tmp/go-build002934745/b001/exe/main[12988]: 2020/06/19 main.go:17: This is a test log message.</code>
+        </pre>
+        <br>
+        Динамическое определение вида и уровня серьезности, при записи в системный журнал:
+        <pre>
+            <code class="hljs">
+package main
+
+import (
+	"log/syslog"
+)
+
+func main() {
+	logger, err := syslog.New(syslog.LOG_LOCAL3, "kiky")
+	if err != nil {
+		panic("Cannot attach to syslog")
+	}
+	defer logger.Close()
+	
+	logger.Debug("Debug message.")
+	logger.Notice("Notice message.")
+	logger.Warning("Warning message.")
+	logger.Alert("Alert message.")
+}</code>
+        </pre>
+        <br>
+        Вывод трассировки стека в поток стандратного вывода:
+        <pre>
+            <code class="hljs">
+package main
+
+import "runtime/debug"
+
+func foo() {
+	bar()
+}
+
+func bar() {
+	debug.PrintStack()
+}
+
+func main() {
+	foo()
+}
+
+// Результат:
+/*
+[kiky@kiky-aspire main]$ go run main.go
+goroutine 1 [running]:
+runtime/debug.Stack(0xc000034778, 0xc00006af78, 0x40461f)
+/usr/lib/go/src/runtime/debug/stack.go:24 +0x9d
+runtime/debug.PrintStack()
+/usr/lib/go/src/runtime/debug/stack.go:16 +0x22
+main.bar(...)
+/home/kiky/go/src/main/main.go:10
+main.foo(...)
+/home/kiky/go/src/main/main.go:6
+main.main()
+/home/kiky/go/src/main/main.go:14 +0x21
+*/</code>
+        </pre>
+      </p>
+    </section>
+    <hr>
+    <footer>
+      <p>
+        Website powered by 
+        <a href="https://terminalcss.xyz/" rel="noopener noreferer">terminal.css</a>
+        framework
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

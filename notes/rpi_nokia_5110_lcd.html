@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Raspberry Pi + Nokia 5110 LCD = ❤</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body class="terminal">
+  <div class="container">
+    <div class="terminal-nav">
+      <div class="terminal-logo">
+        <div class="logo terminal-prompt">
+          <a href="../index.html">./index</a>
+        </div>
+      </div>
+      <nav class="terminal-menu">
+        <ul>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="https://www.buymeacoffee.com/KikyTokamuro" class="bmc-button" target="_blank" property="item" typeof="WebPage" class="menu-item">
+              <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px;font-size:19px !important;">Buy me a coffee</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="container">
+    <section>
+      <h2>
+        Raspberry Pi + Nokia 5110 LCD = ❤ - 13.10.2019
+      </h2>
+      <p>
+        <img src="../img/rpi_nokia_lcd.png">
+        <br><br>
+        Nokia 5110 LCD — это монохромный дисплей 84x48 пикселей, который использовался в старых телефонах Nokia. Основное преимущество этого дисплея — легкость в управлении.
+        <br><br>
+        На плате модуля дисплея расположены два параллельных ряда по 8 пинов для подключения и передачи данных:
+        <br>
+        <ol>
+            <li>RST — Перезагрузка.</li>
+            <li>CE — Выбор чипа.</li>
+            <li>DC — Выбор режима.</li>
+            <li>DIN — Вход данных.</li>
+            <li>CLK — Вход тактового сигнала.</li>
+            <li>VCC — Питание.</li>
+            <li>LIGHT — Питание подсветки дисплея.</li>
+            <li>GND — Земля.</li>
+        </ol>
+        <img src="../img/lcd_pins.png">
+        <br><br>
+        Подключение данного дисплея к Raspberry Pi осуществляется очень просто, вот по этой схеме (чтобы при подключении дисплея работала его подсветка, нужно пин LIGHT подключить на землю):
+        <br><br>
+        <img src="../img/lcd_scheme.png">
+        <br><br>
+        Дальше для взаимодействия с дисплеем на Raspberry Pi нужно установить нужные библиотеки (предполагается что такие вещи как git, python-pip, python-dev, build-essential у вас уже установлены, если нет, то их тоже нужно установить):
+        <pre>
+            <code class="hljs">
+sudo apt install python-imaging
+sudo pip install RPi.GPIO</code>
+        </pre>
+        <br>
+        Так как взаимодействие с модулем экрана осуществляется по SPI, его так же нужно включить на Raspberry Pi. Для этого открываем файл “/boot/config.txt” и раскомментируем в нем строку:
+        <pre>
+            <code class="hljs">
+dtparam=spi=on</code>
+        </pre>
+        <br>
+        После этого сохраняем файл и перезагружаемся командой:
+        <pre>
+            <code class="hljs">
+sudo reboot</code>
+        </pre>
+        <br>
+        Чтобы проверить что SPI включено, можно воспользоваться командой:
+        <pre>
+            <code class="hljs">
+lsmod | grep "spi_bcm*"</code>
+        </pre>
+        <br>
+        Дальше скачиваем и устанавливаем библиотеку для взаимодействия с дисплеем Nokia 5110:
+        <pre>
+            <code class="hljs">
+git clone https://github.com/adafruit/Adafruit_Nokia_LCD
+cd Adafruit_Nokia_LCD
+sudo python setup.py install</code>
+        </pre>
+        <br>
+        Чтобы проверить то что дисплей правильно подключен и все работает, можно запустить один из примеров, из папки “Adafruit_Nokia_LCD/examples/”.
+        <br><br>
+        А теперь попробуем написать простенькие часы для этого дисплея:
+        <pre>
+            <code class="hljs">
+#!/usr/bin/python
+
+import time
+from datetime import datetime
+
+import Adafruit_Nokia_LCD as LCD
+import Adafruit_GPIO.SPI as SPI
+
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
+
+# Raspberry Pi hardware SPI config:
+DC = 23
+RST = 24
+SPI_PORT = 0
+SPI_DEVICE = 0
+
+# Hardware SPI usage:
+disp = LCD.PCD8544(DC, RST, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz=4000000))
+
+# Software SPI usage (defaults to bit-bang SPI interface):
+#disp = LCD.PCD8544(DC, RST, SCLK, DIN, CS)
+
+# Initialize library.
+disp.begin(contrast=40)
+
+# Clear display.
+disp.clear()
+disp.display()
+
+# Create blank image for drawing.
+# Make sure to create image with mode '1' for 1-bit color.
+image = Image.new('1', (LCD.LCDWIDTH, LCD.LCDHEIGHT))
+
+# Get drawing object to draw on image.
+draw = ImageDraw.Draw(image)
+
+print('Press Ctrl-C to quit.')
+
+while True:
+    # Get current time
+    strt = datetime.now().strftime('%H:%M:%S')
+
+    # Draw a white filled box to clear the image.
+    draw.rectangle((0,0,LCD.LCDWIDTH,LCD.LCDHEIGHT), outline=255, fill=255)
+
+    # Alternatively load a TTF font.
+    # Some nice fonts to try: http://www.dafont.com/bitmap.php
+    font = ImageFont.truetype('game_over.ttf', 58)
+
+    # Write some text.
+    draw.text((0,0), strt, font=font)
+
+    # Display image.
+    disp.image(image)
+    disp.display()
+    
+    time.sleep(1.0)</code>
+        </pre>
+        <br>
+        Запускается этот код командой:
+        <pre>
+            <code class="hljs">
+sudo python clock.py</code>
+        </pre>
+        <br>
+        Демонстрация работы получившихся часов:
+        <br><br>
+        <iframe width="853" height="480" src="https://www.youtube.com/embed/Pj_oeo0m8-s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </p>
+    </section>
+    <hr>
+    <footer>
+      <p>
+        Website powered by 
+        <a href="https://terminalcss.xyz/" rel="noopener noreferer">terminal.css</a>
+        framework
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Перепрошивка Nokia N900</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body class="terminal">
+  <div class="container">
+    <div class="terminal-nav">
+      <div class="terminal-logo">
+        <div class="logo terminal-prompt">
+          <a href="../index.html">./index</a>
+        </div>
+      </div>
+      <nav class="terminal-menu">
+        <ul>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="https://www.buymeacoffee.com/KikyTokamuro" class="bmc-button" target="_blank" property="item" typeof="WebPage" class="menu-item">
+              <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px;font-size:19px !important;">Buy me a coffee</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="container">
+    <section>
+      <h2>
+        Перепрошивка Nokia N900 - 06.10.2019
+      </h2>
+      <p>
+        <img src="../img/nokia_n900_boot.png">
+        <br><br>
+        <strong>Предупреждение: автор не несет ответственности за причиненные повреждения вашему аппарату в процессе следования данным инструкциям. Вы все делаете на свой страх и риск.</strong>
+        <br><br>
+        Не так давно мне в руки попал знаменитый Nokia n900, я с ним всячески разбирался. Да так разбирался, что слетело ядро, и девайс впал в bootloop.
+        <br>
+        Раз сломал, нужно чинить. Были найдены нужные <a href="http://talk.maemo.org/showpost.php?p=1418219&postcount=13">файлы</a>, и <a href="https://wiki.maemo.org/User:Agge/Updating_the_firmware/rev2">мануал</a> по прошивке данного телефона.
+        <br><br>
+        Если вкратце, то для прошивки n900, нужно 3 вещи:
+        <ol>
+            <li>Образ FIASCO aka COMBINED — в него входит rootfs, kernel, и прошивка GSM модуля (если верить вики).</li>
+            <li>Образ eMMC aka VANILLA — нужен для очистки пользовательского раздела /home
+                (прошивку данного образа мы рассматривать не будем, так как мне это было просто не нужно. Но он прошивается почти так же как и первый).</li>
+            <li>Флешер, он же flasher-3.5 — софт с помощью которого и будем прошивать.</li>
+        </ol>
+        Образы берем от <a href="https://talk.maemo.org/showpost.php?p=1418219&postcount=13">сюда</a>, а флешер можно найти <a href="https://soft.sibnet.ru/soft/22060-maemo-flasher-3-5/">тут</a>. Я флешер ставил из <a href="https://aur.archlinux.org/packages/flasher/">AUR</a>, так как от туда еще и подтянулась нужная библиотека:
+        <pre>
+            <code class="hljs">
+yaourt flasher</code>
+        </pre>
+        <br>
+        Приступим к прошивке:
+        <br>
+        Переходим в директорию с образом прошивки, и выполняем команду (имя образа у вас может быть другим):
+        <pre>
+            <code class="hljs">
+sudo flasher-3.5 -F RX-51_2009SE_20.2010.36-2.003_PR_COMBINED_003_ARM.bin -f -R</code>
+        </pre>
+        <br>
+        Должно появится что-то на подобии:
+        <pre>
+            <code class="hljs">
+...
+Suitable USB device not found, waiting</code>
+        </pre>
+        <br>
+        Выключаем N900, зажимаем клавишу “u” на клавиатуре девайса, и только потом подключаем USB шнур.
+        <br>
+        Если вы все правильно сделали, то на экране телефона появится значок USB, а на компьютере в терминале побегут строки с информацией о перепрошивке.
+        <br>
+        После этих действий телефон должен перезагрузиться, и начать работать с новой прошивкой.
+        <br><br>
+        Но не тут то было, у меня после выполнения этих действий, в терминале выбило ошибку (не все могут с ней столкнуться, у некоторых все отлично шьется):
+        <pre>
+            <code class="hljs">
+Error claiming USB interface: Device or resource busy</code>
+        </pre>
+        <br>
+        Решается она удалением модуля ядра:
+        <pre>
+            <code class="hljs">
+sudo modprobe -r cdc_phonet</code>
+        </pre>
+        <br>
+        Вы так же можете столкнуться с другими ошибками, с их решением можно ознакомиться <a href="https://wiki.maemo.org/User:Agge/Updating_the_firmware/rev2/Trubleshooting">тут</a>.
+      </p>
+    </section>
+    <hr>
+    <footer>
+      <p>
+        Website powered by 
+        <a href="https://terminalcss.xyz/" rel="noopener noreferer">terminal.css</a>
+        framework
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

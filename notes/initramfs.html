@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Созданиe initramfs</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body class="terminal">
+  <div class="container">
+    <div class="terminal-nav">
+      <div class="terminal-logo">
+        <div class="logo terminal-prompt">
+          <a href="../index.html">./index</a>
+        </div>
+      </div>
+      <nav class="terminal-menu">
+        <ul>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="https://www.buymeacoffee.com/KikyTokamuro" class="bmc-button" target="_blank" property="item" typeof="WebPage" class="menu-item">
+              <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px;font-size:19px !important;">Buy me a coffee</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="container">
+    <section>
+      <h2>
+        Созданиe initramfs - 13.09.2019
+      </h2>
+      <p>
+        Initramfs, сокращенно от “initial RAM file system”, является приемником initrd (initial ramdisk). Это cpio (copy in and out) архив исходной файловой системы, который загружается в память во время процесса запуска Linux. Linux копирует содержимое архива в rootfs (которая может быть основана на ramfs либо на tmpfs), а затем запускает init. Init предназначен для выполнения определенных задач до того, как реальная или финальная файловая система будет установлена поверх rootfs. Таким образом, initramfs должен содержать все драйвера устройств и инструменты, необходимые для установки конечной корневой файловой системы.
+        <br><br>
+        Скачиваем busybox (вы можете скачать более новую версию):
+        <pre>
+            <code class="hljs">
+wget https://busybox.net/downloads/busybox-1.26.2.tar.bz2
+tar -xvf busybox-1.26.2.tar.bz2</code>
+        </pre>
+        <br>
+        Собираем busybox из исходников:
+        <pre>
+            <code class="hljs">
+cd busybox-1.26.2
+make defconfig
+make menuconfig</code>
+        </pre>
+        <br>
+        В меню Busybox Settings выбираем Build Options, и ставим галочку напротив Build BusyBox as a static binary (no shared libs). Далее указываем выходную папку для бинарников и собираем busybox.
+        <pre>
+            <code class="hljs">
+make
+make CONFIG_PREFIX=./../busybox_rootfs install</code>
+        </pre>
+        <br>
+        Создаем иерархию каталогов для initramfs:
+        <pre>
+            <code class="hljs">
+mkdir -p initramfs/{bin,dev,etc,home,mnt,proc,sys,usr}
+cd initramfs/dev
+sudo mknod sda b 8 0
+sudo mknod console c 5 1</code>
+        </pre>
+        <br>
+        Так же копируем все из папки busybox_rootfs в папку initramfs. Дальше создаем в корне initramfs файл init, и пишем в него следующее:
+        <pre>
+            <code class="hljs">
+#!/bin/sh
+mount -t proc none /proc
+mount -t sysfs none /sys
+exec /bin/sh</code>
+        </pre>
+        <br>
+        И даем ему права на исполнение:
+        <pre>
+            <code class="hljs">
+chmod +x init</code>
+        </pre>
+        <br>
+        Создаем сам initramfs:
+        <pre>
+            <code class="hljs">
+find . -print0 | cpio --null -ov --format=newc > initramfs.cpio
+gzip ./initramfs.cpio</code>
+        </pre>
+        <br>
+        Скачиваем и собираем ядро (вы можете скачать более новую версию):
+        <pre>
+            <code class="hljs">
+wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.11.6.tar.xz
+tar -xvf linux-4.11.6.tar.xz
+make x86_64_defconfig
+make kvmconfig
+make -j2</code>
+        </pre>
+        <br>
+        Образ ядра будет лежать в /arch/x86_64/boot/bzImage.
+        <br><br>
+        Дальше копируем куда-то наш initramfs и ядро, заходим в эту дерикторию и запускаем qemu:
+        <pre>
+            <code class="hljs">
+qemu-system-x86_64 -kernel ./bzImage -initrd ./initramfs.cpio.gz -nographic -append "console=ttyS0"</code>
+        </pre>
+        <br>
+        Если все было выполнено правильно, то загрузится ядро и запустится shell.
+      </p>
+    </section>
+    <hr>
+    <footer>
+      <p>
+        Website powered by 
+        <a href="https://terminalcss.xyz/" rel="noopener noreferer">terminal.css</a>
+        framework
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

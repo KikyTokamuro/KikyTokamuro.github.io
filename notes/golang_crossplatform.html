@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Golang заметки - Кросс-платформенная компиляция</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body class="terminal">
+  <div class="container">
+    <div class="terminal-nav">
+      <div class="terminal-logo">
+        <div class="logo terminal-prompt">
+          <a href="../index.html">./index</a>
+        </div>
+      </div>
+      <nav class="terminal-menu">
+        <ul>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="https://www.buymeacoffee.com/KikyTokamuro" class="bmc-button" target="_blank" property="item" typeof="WebPage" class="menu-item">
+              <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px;font-size:19px !important;">Buy me a coffee</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="container">
+    <section>
+      <h2>
+        Golang заметки - Кросс-платформенная компиляция - 03.08.2020
+      </h2>
+      <p>
+        Очень часто бывает так, что приложение разрабатывается в одной ОС, а эксплуатироваться должно в другой, данную проблему решает кросс-платформенная компиляция.
+        <br><br>
+        Начиная с версии 1.5 компилятор языка Go начал поддерживать кросс-платформенную компиляцию из коробки. Для этого необходимо в переменных окружения <strong>GOARCH</strong> и <strong>GOOS</strong> указать целевую архитектуру и ОС.
+        <br><br>
+        Допустимыми комбинациями <strong>GOOS</strong> и <strong>GOARCH</strong> являются:
+        <table>
+            <thead>
+                <tr>
+                    <th>GOOS</th>
+                    <th>GOARCH</th>
+                </tr>   
+            </thead>
+            <tbody>
+                <tr><td>aix</td><td>ppc64</td></tr>
+                <tr><td>android</td><td>386</td></tr>
+                <tr><td>android</td><td>arm64</td></tr>
+                <tr><td>android</td><td>arm</td></tr>
+                <tr><td>android</td><td>amd64</td></tr>
+                <tr><td>darwin</td><td>386</td></tr>
+                <tr><td>darwin</td><td>amd64</td></tr>
+                <tr><td>darwin</td><td>arm</td></tr>
+                <tr><td>darwin</td><td>arm64</td></tr>
+                <tr><td>dragonfly</td><td>amd64</td></tr>
+                <tr><td>freebsd</td><td>arm</td></tr>
+                <tr><td>freebsd</td><td>386</td></tr>
+                <tr><td>freebsd</td><td>arm64</td></tr>
+                <tr><td>freebsd</td><td>amd64</td></tr>
+                <tr><td>illumos</td><td>amd64</td></tr>
+                <tr><td>js</td><td>wasm</td></tr>
+                <tr><td>linux</td><td>mips64</td></tr>
+                <tr><td>linux</td><td>mips64le</td></tr>
+                <tr><td>linux</td><td>ppc64le</td></tr>
+                <tr><td>linux</td><td>amd64</td></tr>
+                <tr><td>linux</td><td>mipsle</td></tr>
+                <tr><td>linux</td><td>arm</td></tr>
+                <tr><td>linux</td><td>ppc64</td></tr>
+                <tr><td>linux</td><td>riscv64</td></tr>
+                <tr><td>linux</td><td>mips</td></tr>
+                <tr><td>linux</td><td>386</td></tr>
+                <tr><td>linux</td><td>arm64</td></tr>
+                <tr><td>linux</td><td>s390x</td></tr>
+                <tr><td>netbsd</td><td>arm</td></tr>
+                <tr><td>netbsd</td><td>arm64</td></tr>
+                <tr><td>netbsd</td><td>amd64</td></tr>
+                <tr><td>netbsd</td><td>386</td></tr>
+                <tr><td>openbsd</td><td>arm</td></tr>
+                <tr><td>openbsd</td><td>amd64</td></tr>
+                <tr><td>openbsd</td><td>arm64</td></tr>
+                <tr><td>openbsd</td><td>386</td></tr>
+                <tr><td>plan9</td><td>386</td></tr>
+                <tr><td>plan9</td><td>amd64</td></tr>
+                <tr><td>plan9</td><td>arm</td></tr>
+                <tr><td>solaris</td><td>amd64</td></tr>
+                <tr><td>windows</td><td>386</td></tr>
+                <tr><td>windows</td><td>amd64</td></tr>
+                <tr><td>windows</td><td>arm</td></tr>
+            </tbody>
+        </table>
+        <br>
+        Пример использования:
+        <br>
+        <pre>
+        <code class="hljs">
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello World")
+}</code>
+        </pre>
+        <br>
+        Собираем под Windows с 386 архитектурой:
+        <br>
+        <pre>
+        <code class="hljs">
+GOOS=windows GOARCH=386 go build main.go</code>
+        </pre>
+        <br>
+        Проверяем правильно ли собралось:
+        <pre>
+        <code class="hljs">
+$ file main.exe
+main.exe: PE32 executable (console) Intel 80386 (stripped to external PDB), for MS Windows</code>
+        </pre>
+      </p>
+    </section>
+    <hr>
+    <footer>
+      <p>
+        Website powered by 
+        <a href="https://terminalcss.xyz/" rel="noopener noreferer">terminal.css</a>
+        framework
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

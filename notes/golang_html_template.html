@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Golang заметки - Работа с HTML шаблонами</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body class="terminal">
+  <div class="container">
+    <div class="terminal-nav">
+      <div class="terminal-logo">
+        <div class="logo terminal-prompt">
+          <a href="../index.html">./index</a>
+        </div>
+      </div>
+      <nav class="terminal-menu">
+        <ul>
+          <li property="itemListElement" typeof="ListItem">
+            <a href="https://www.buymeacoffee.com/KikyTokamuro" class="bmc-button" target="_blank" property="item" typeof="WebPage" class="menu-item">
+              <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px;font-size:19px !important;">Buy me a coffee</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="container">
+    <section>
+      <h2>
+        Golang заметки - Работа с HTML шаблонами - 08.07.2020
+      </h2>
+      <p>
+        Пакеты <strong>html</strong> и <strong>html/template</strong> из стандартной библиотеки обеспечивают основные возможности работы с HTML разметкой, включая применение переменных и функций в шаблонах. Пакет <strong>html/template</strong> опирается на пакет <strong>text/template</strong>, предназначенный для обработки текстовых шаблонов.
+        <br><br>
+        <h3>Использование простого HTML шаблона</h3>
+        <pre>
+            <code class="hljs">
+package main
+
+import (
+	"html/template"
+	"net/http"
+)
+
+var tmpl = `
+&lt;h1&gt;
+&lt;a href=&quot;{{.Link}}&quot;&gt;{{.Text}}&lt;/a&gt;
+&lt;/h1&gt;`
+
+type page struct {
+	Text string
+	Link string
+}
+
+func indexHandle(w http.ResponseWriter, r *http.Request) {
+	t, _ := template.New("page").Parse(tmpl)
+	p := page{
+		Text: "github",
+		Link: "https://github.com/",
+	}
+	t.Execute(w, p)
+}
+
+func main() {
+	http.HandleFunc("/", indexHandle)
+	http.ListenAndServe(":3000", nil)
+}</code>
+        </pre>
+        <br>
+        <h3>Добавление функций для шаблонов</h3>
+        Механизм конвейера передает вывод одного элемента конвейера следующему в последнем аргументе.
+        <pre>
+            <code class="hljs">
+package main
+
+import (
+	"html/template"
+	"net/http"
+	"strings"
+)
+
+var tmpl = `
+&lt;h1&gt;
+&lt;a href=&quot;{{.Link}}&quot;&gt;{{.Text | ToUpper}}&lt;/a&gt;
+&lt;/h1&gt;`
+
+type page struct {
+	Text string
+	Link string
+}
+
+func indexHandle(w http.ResponseWriter, r *http.Request) {
+	// Добавление функции ToUpper из стандартной библиотеки strings
+	funcMap := template.FuncMap{
+		"ToUpper": strings.ToUpper,
+	}
+	t, _ := template.New("page").Funcs(funcMap).Parse(tmpl)
+	p := page{
+		Text: "github",
+		Link: "https://github.com/",
+	}
+	t.Execute(w, p)
+}
+
+func main() {
+	http.HandleFunc("/", indexHandle)
+	http.ListenAndServe(":3000", nil)
+}</code>
+        </pre>
+        <br>
+        <h3>Использование вложенных шаблонов</h3>
+        Шаблон заголовка, включаемый в главный шаблон:
+        <pre>
+            <code class="hljs">
+package main
+
+import (
+	"html/template"
+	"net/http"
+)
+
+var header = `
+{{define "header"}}
+&lt;h1&gt;Header&lt;/h1&gt;
+&lt;hr&gt;
+{{end}}`
+
+var tmpl = `
+{{template "header" .}}
+&lt;h1&gt;
+&lt;a href=&quot;{{.Link}}&quot;&gt;{{.Text}}&lt;/a&gt;
+&lt;/h1&gt;`
+
+type page struct {
+	Text string
+	Link string
+}
+
+func indexHandle(w http.ResponseWriter, r *http.Request) {
+	t, _ := template.New("page").Parse(header)
+	t.Parse(tmpl)
+	p := page{
+		Text: "github",
+		Link: "https://github.com/",
+	}
+	t.Execute(w, p)
+}
+
+func main() {
+	http.HandleFunc("/", indexHandle)
+	http.ListenAndServe(":3000", nil)
+}</code>
+        </pre>
+        <br>
+        Когда шаблоны храняться в файлах, их можно считывать такой конструкцией: <strong>template.Must(template.ParseFiles("index.html", "header.html"))</strong>
+        <pre>
+            <code class="hljs">
+package main
+
+import (
+	"html/template"
+	"net/http"
+)
+
+type page struct {
+	Text string
+	Link string
+}
+
+func indexHandle(w http.ResponseWriter, r *http.Request) {
+	t := template.Must(template.ParseFiles("index.html", "header.html"))
+	p := page{
+		Text: "github",
+		Link: "https://github.com/",
+	}
+	t.ExecuteTemplate(w, "index.html", p)
+}
+
+func main() {
+	http.HandleFunc("/", indexHandle)
+	http.ListenAndServe(":3000", nil)
+}</code>
+        </pre>
+        Для обработки шаблона используется метод <strong>ExecuteTemplate</strong>, чтобы можно было указать имя основного шаблона. Если вызвать метод <strong>Execute</strong>, как в предыдущих примерах, он обработал бы первый шаблон из перечисленных в вызове функции <strong>ParseFiles</strong>.
+        </p>
+    </section>
+    <hr>
+    <footer>
+      <p>
+        Website powered by 
+        <a href="https://terminalcss.xyz/" rel="noopener noreferer">terminal.css</a>
+        framework
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
