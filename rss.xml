@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns="http://purl.org/rss/1.0/"
+ xmlns:admin="http://webns.net/mvcb/"
+ xmlns:content="http://purl.org/rss/1.0/modules/content/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+ xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+>
+
+<channel rdf:about="https://kikytokamuro.github.io/">
+<title>Kiky Page RSS</title>
+<link>https://kikytokamuro.github.io/</link>
+<description></description>
+<dc:date>2021-07-04T18:39:47Z</dc:date>
+<items>
+ <rdf:Seq>
+  <rdf:li rdf:resource="https://kikytokamuro.github.io/notes/golang_crossplatform.html" />
+  <rdf:li rdf:resource="https://kikytokamuro.github.io/notes/golang_html_template.html" />
+  <rdf:li rdf:resource="https://kikytokamuro.github.io/notes/golang_logging.html" />
+  <rdf:li rdf:resource="https://kikytokamuro.github.io/notes/rpi_nokia_5110_lcd.html" />
+  <rdf:li rdf:resource="https://kikytokamuro.github.io/notes/nokia_n900_firmware.html" />
+  <rdf:li rdf:resource="https://kikytokamuro.github.io/notes/initramfs.html" />
+  <rdf:li rdf:resource="https://kikytokamuro.github.io/notes/proxmark3.html" />
+ </rdf:Seq>
+</items>
+</channel>
+<item rdf:about="https://kikytokamuro.github.io/notes/golang_crossplatform.html">
+<title>Golang &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x438; - &#x41A;&#x440;&#x43E;&#x441;&#x441;-&#x43F;&#x43B;&#x430;&#x442;&#x444;&#x43E;&#x440;&#x43C;&#x435;&#x43D;&#x43D;&#x430;&#x44F; &#x43A;&#x43E;&#x43C;&#x43F;&#x438;&#x43B;&#x44F;&#x446;&#x438;&#x44F;</title>
+<link>https://kikytokamuro.github.io/notes/golang_crossplatform.html</link>
+</item>
+<item rdf:about="https://kikytokamuro.github.io/notes/golang_html_template.html">
+<title>Golang &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x438; - &#x420;&#x430;&#x431;&#x43E;&#x442;&#x430; &#x441; HTML &#x448;&#x430;&#x431;&#x43B;&#x43E;&#x43D;&#x430;&#x43C;&#x438;</title>
+<link>https://kikytokamuro.github.io/notes/golang_html_template.html</link>
+</item>
+<item rdf:about="https://kikytokamuro.github.io/notes/golang_logging.html">
+<title>Golang &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x438; - &#x416;&#x443;&#x440;&#x43D;&#x430;&#x43B;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x438;&#x435;</title>
+<link>https://kikytokamuro.github.io/notes/golang_logging.html</link>
+</item>
+<item rdf:about="https://kikytokamuro.github.io/notes/rpi_nokia_5110_lcd.html">
+<title>Raspberry Pi + Nokia 5110 LCD = &#x2764;</title>
+<link>https://kikytokamuro.github.io/notes/rpi_nokia_5110_lcd.html</link>
+</item>
+<item rdf:about="https://kikytokamuro.github.io/notes/nokia_n900_firmware.html">
+<title>&#x41F;&#x435;&#x440;&#x435;&#x43F;&#x440;&#x43E;&#x448;&#x438;&#x432;&#x43A;&#x430; Nokia N900</title>
+<link>https://kikytokamuro.github.io/notes/nokia_n900_firmware.html</link>
+</item>
+<item rdf:about="https://kikytokamuro.github.io/notes/initramfs.html">
+<title>&#x421;&#x43E;&#x437;&#x434;&#x430;&#x43D;&#x438;e initramfs</title>
+<link>https://kikytokamuro.github.io/notes/initramfs.html</link>
+</item>
+<item rdf:about="https://kikytokamuro.github.io/notes/proxmark3.html">
+<title>&#x418;&#x441;&#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x43D;&#x438;&#x44F; Proxmark3 &#x434;&#x43B;&#x44F; &#x43A;&#x43B;&#x43E;&#x43D;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x438;&#x44F; &#x43F;&#x440;&#x43E;&#x43F;&#x443;&#x441;&#x43A;&#x430; &#x447;&#x435;&#x440;&#x435;&#x437; &#x442;&#x443;&#x440;&#x43D;&#x438;&#x43A;&#x435;&#x442;</title>
+<link>https://kikytokamuro.github.io/notes/proxmark3.html</link>
+</item>
+</rdf:RDF>
