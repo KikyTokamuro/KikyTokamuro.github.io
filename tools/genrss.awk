@@ -10,9 +10,7 @@ BEGIN {
 }
 
 {
-    match( $0,
-        /<a href="(.\/notes\/.*)">(.*)<\/a>.*([0-9]{2}\.[0-9]{2}\.[0-9]{4})$/,
-        arr );
+    match( $0, /<a href="(.\/notes\/.*)">(.*)<\/a>.-.(.*)$/, arr );
 
     if ( length( arr [1] ) != 0 ) {
         printf "<item> \
