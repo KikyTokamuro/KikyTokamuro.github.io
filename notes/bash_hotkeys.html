@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bash Hotkeys</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body class="terminal">
+  <div class="container">
+    <div class="terminal-nav">
+      <div class="terminal-logo">
+        <div class="logo terminal-prompt">
+          <a href="../index.html">./index</a>
+        </div>
+      </div>
+      <nav class="terminal-menu">
+        <ul>
+          <a href="https://www.buymeacoffee.com/KikyTokamuro" target="_blank" class="menu-item coffee">
+	          <span class="coffee-icon">☕</span> Buy me a coffee
+          </a>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="container">
+    <section>
+      <h2>
+        Bash Hotkeys - 02/11/2022
+      </h2>
+      <p>
+        <code>Ctrl + a</code> - Перевод курсора в начало строки <br>
+        <code>Ctrl + b</code> - Перевод курсора на 1 символ назад <br>
+        <code>Ctrl + c</code> - Посылает программе SIGINT и прерывает текущую задачу <br>
+        <code>Ctrl + d</code> - Удаляет символ под курсором <br>
+        <code>Ctrl + e</code> - Перевод курсора в конец строки <br>
+        <code>Ctrl + f</code> - Перевод курсора на 1 символ вперед <br>
+        <code>Ctrl + k</code> - Удаляет все символы до конца строки <br>
+        <code>Ctrl + l</code> - Очищает экран <br>
+        <code>Ctrl + r</code> - Поиск по истории <br>
+        <code>Ctrl + j</code> - Остановка поиска и редактирование найденной команды <br>
+        <code>Ctrl + t</code> - Замена местами символа под курсором и предыдущего <br>
+        <code>Ctrl + u</code> - Удаляет все символы слева от курсора до начала строки <br>
+        <code>Ctrl + w</code> - Удаляет символы слева от курсора до начала слова <br>
+        <code>Ctrl + xx</code> - Переходит от текущей позиции курсора в начало строки и обратно <br>
+        <code>Ctrl + x @</code> - Показывает возможные дополнения имени хоста (<code>/etc/hosts</code>) <br>
+        <code>Ctrl + z</code> - Приостанавливает выполнение текущей задачи <br>
+        <code>Ctrl + x; Ctrl + e</code> - Открывает <code>$EDITOR</code> для изменения введённой строки <br><br>
+
+        <code>Alt + <</code> - Переход к первой команде в истории <br>
+        <code>Alt + ></code> - Переход к последней команде в истории <br>
+        <code>Alt + ?</code> - Выводит список возможных дополнений команды <br>
+        <code>Alt + *</code> - Вставляет все возможные дополнения команды в строку команд <br>
+        <code>Alt + /</code> - Предлагает дополнить имя файла <br>
+        <code>Alt + .</code> - Вставляет последний аргумент предыдущей команды <br>
+        <code>Alt + b</code> - Перевод курсора влево на 1 слово <br>
+        <code>Alt + c</code> - Делает букву под курсором большой, а остальные, до конца слова, маленькими <br>
+        <code>Alt + d</code> - Удаляет символы с текущей позиции курсора и до конца слова <br>
+        <code>Alt + f</code> - Перевод курсора вправо на 1 слово <br>
+        <code>Alt + l</code> - Переводит буквы с текущей позиции курсора и до конца слова в нижний регистр <br>
+        <code>Alt + t</code> - Меняет местами слова под курсором и предыдущее <br>
+        <code>Alt + u</code> - Переводит буквы с текущей позиции курсора и до конца слова в верхний регистр <br>
+        <code>Alt + Backspace</code> - Удаляет символы с текущей позиции курсора до начала слова <br><br>
+
+        <code>(string) Tab + Tab</code> - Вывод списка возможных дополнений строки <br>
+        <code>(dir) Tab + Tab</code> - Вывод подкаталогов каталога <br>
+        <code>* Tab + Tab</code> - Вывод подкаталогов (исключая скрытые) <br>
+        <code>~ Tab + Tab</code> - Вывод всех пользователей из <code>/etc/passwd</code> <br>
+        <code>$ Tab + Tab</code> - Вывод списка дополнений для переменных окружения <br>
+        <code>@ Tab + Tab</code> - Дополняет имена хостов содержащимися в <code>/etc/hosts</code> <br>
+        <code>= Tab + Tab</code> - Листинг текущей директории <br>
+      </p>
+    </section>
+    <hr>
+    <footer>
+      <p>
+        Website powered by 
+        <a href="https://terminalcss.xyz/" rel="noopener noreferer">terminal.css</a>
+        framework
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
