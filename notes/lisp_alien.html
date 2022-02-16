@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lisp Alien</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport">
+  <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico">
+</head>
+<body class="terminal">
+  <div class="container">
+    <div class="terminal-nav">
+      <div class="terminal-logo">
+        <div class="logo terminal-prompt">
+          <a href="../index.html">./index</a>
+        </div>
+      </div>
+      <nav class="terminal-menu">
+        <ul>
+          <a href="https://www.buymeacoffee.com/KikyTokamuro" target="_blank" class="menu-item coffee">
+	          <span class="coffee-icon">☕</span> Buy me a coffee
+          </a>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="container">
+    <section>
+      <h2>
+        Lisp Alien - 02/16/2022
+      </h2>
+      <p>
+	<cite>** You must have JavaScript enabled to display the content in this note correctly **</cite><br><br>
+	Once upon a time I stumbled upon a <a href="https://www.lisperati.com/#!The_Official_Lisp_Alien_3D_Model" target="_blank">Lisp Alien 3D Model</a>, I thought I wanted the same one, but more elaborate and with more detail accuracy.<br><br>
+	As time went on, the idea also remained somewhere in the depths of memory.<br><br>
+	And recently, <a href="mailto:stanislove1199@gmail.com">my friend</a> told me that he began to get involved in 3D modeling. I thought this was my chance to bring my old idea to life.<br>
+	We consulted with him a bit, discussed the details, as well as how the final model should look, and he agreed to take on this project.<br><br>
+	During the implementation of the project, it was very interesting to watch how the model develops, new details appear in it, a soul appears.<br>
+	From the very beginning, we wanted to make only an alien, and it will stop there.<br><br>
+	But then we decided to add various new details to it:<br>
+	<ul>
+	  <li>the pedestal on which he will stand</li>
+	  <li>flag</li>
+	  <li>sword and shield</li>
+	  <li>brain model inside an alien... don't ask why...</li>
+	  <li>retro computer</li>
+	</ul>
+	It turned out funny with the computer model, we took the old Macintosh as a basis, and slightly changed its name to Nushtosh (Russian speakers will appreciate the joke):<br><br>
+	<img src="../lisp-alien/nushtosh.jpg"><br><br>
+	A small cut of the moments of creation can be seen in this animation:<br><br>
+	<img src="../lisp-alien/process.gif"><br><br>
+	It was a very interesting and fun project, the result of which we were pleased with.<br><br>
+	Lisp Alien 3D model (you can twist and see):<br><br>
+	<model-viewer id="alien-model" alt="Lisp Alien" src="../lisp-alien/alien.glb" ar ar-modes="webxr scene-viewer quick-look" shadow-intensity="1" camera-controls></model-viewer><br><br>
+	The pedestal 3D model (you can twist and see):<br><br>
+	<model-viewer id="pedestal-model" alt="Pedestal" src="../lisp-alien/sword.glb" ar ar-modes="webxr scene-viewer quick-look" shadow-intensity="1" camera-controls></model-viewer><br><br>
+	Ready-made renders that can be put on the desktop wallpaper:<br><br>
+	<img src="../lisp-alien/alien.png"><br><br>
+	<img src="../lisp-alien/sword.png"><br><br>
+	All files from this note can be found <a href="https://github.com/KikyTokamuro/KikyTokamuro.github.io/tree/master/lisp-alien">here</a>.
+      </p>
+    </section>
+    <hr>
+    <footer>
+      <p>
+        Website powered by 
+        <a href="https://terminalcss.xyz/" rel="noopener noreferer">terminal.css</a>
+        framework
+      </p>
+    </footer>
+  </div>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    #alien-model,
+    #pedestal-model {
+	width: 100%;
+	height: 500px;
+    }
+  </style>
+</body>
+</html>
