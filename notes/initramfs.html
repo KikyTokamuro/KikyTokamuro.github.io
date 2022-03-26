@@ -35,14 +35,14 @@
         <br><br>
         Скачиваем busybox (вы можете скачать более новую версию):
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 wget https://busybox.net/downloads/busybox-1.26.2.tar.bz2
 tar -xvf busybox-1.26.2.tar.bz2</code>
         </pre>
         <br>
         Собираем busybox из исходников:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 cd busybox-1.26.2
 make defconfig
 make menuconfig</code>
@@ -50,14 +50,14 @@ make menuconfig</code>
         <br>
         В меню Busybox Settings выбираем Build Options, и ставим галочку напротив Build BusyBox as a static binary (no shared libs). Далее указываем выходную папку для бинарников и собираем busybox.
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 make
 make CONFIG_PREFIX=./../busybox_rootfs install</code>
         </pre>
         <br>
         Создаем иерархию каталогов для initramfs:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 mkdir -p initramfs/{bin,dev,etc,home,mnt,proc,sys,usr}
 cd initramfs/dev
 sudo mknod sda b 8 0
@@ -66,7 +66,7 @@ sudo mknod console c 5 1</code>
         <br>
         Так же копируем все из папки busybox_rootfs в папку initramfs. Дальше создаем в корне initramfs файл init, и пишем в него следующее:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 #!/bin/sh
 mount -t proc none /proc
 mount -t sysfs none /sys
@@ -75,20 +75,20 @@ exec /bin/sh</code>
         <br>
         И даем ему права на исполнение:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 chmod +x init</code>
         </pre>
         <br>
         Создаем сам initramfs:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 find . -print0 | cpio --null -ov --format=newc > initramfs.cpio
 gzip ./initramfs.cpio</code>
         </pre>
         <br>
         Скачиваем и собираем ядро (вы можете скачать более новую версию):
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.11.6.tar.xz
 tar -xvf linux-4.11.6.tar.xz
 make x86_64_defconfig
@@ -100,7 +100,7 @@ make -j2</code>
         <br><br>
         Дальше копируем куда-то наш initramfs и ядро, заходим в эту дерикторию и запускаем qemu:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 qemu-system-x86_64 -kernel ./bzImage -initrd ./initramfs.cpio.gz -nographic -append "console=ttyS0"</code>
         </pre>
         <br>
@@ -116,5 +116,13 @@ qemu-system-x86_64 -kernel ./bzImage -initrd ./initramfs.cpio.gz -nographic -app
       </p>
     </footer>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("pre code").forEach(block => {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
 </body>
 </html>

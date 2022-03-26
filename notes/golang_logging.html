@@ -33,7 +33,7 @@
       <p>
         Простейшее использование пакета log. Сообщения пишутся в os.Stderr:
         <pre>
-            <code class="hljs">
+            <code class="hljs go">
 package main
 
 import (
@@ -48,7 +48,7 @@ func main() {
         <br>
         Журналирование с использование log.Logger, он поддерживает функции передачи данных любому объекту io.Writer, способен работать с файлами и сетевыми подключениями:
         <pre>
-            <code class="hljs">
+            <code class="hljs go">
 package main
 
 import (
@@ -69,7 +69,7 @@ func main() {
         <br><br>
         Пример простого журналирования с записью в сетевой сокет:
         <pre>
-            <code class="hljs">
+            <code class="hljs go">
 package main
 
 import (
@@ -92,7 +92,7 @@ func main() {
         <br>
         Запись сообщений в системный журнал, с помощью log/syslog:
         <pre>
-            <code class="hljs">
+            <code class="hljs go">
 package main
 
 import (
@@ -119,7 +119,7 @@ func main() {
         <br>
         Динамическое определение вида и уровня серьезности, при записи в системный журнал:
         <pre>
-            <code class="hljs">
+            <code class="hljs go">
 package main
 
 import (
@@ -142,7 +142,7 @@ func main() {
         <br>
         Вывод трассировки стека в поток стандратного вывода:
         <pre>
-            <code class="hljs">
+            <code class="hljs go">
 package main
 
 import "runtime/debug"
@@ -186,5 +186,13 @@ main.main()
       </p>
     </footer>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("pre code").forEach(block => {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
 </body>
 </html>

@@ -35,7 +35,7 @@
         <br><br>
         <h3>Использование простого HTML шаблона</h3>
         <pre>
-            <code class="hljs">
+            <code class="hljs go">
 package main
 
 import (
@@ -71,7 +71,7 @@ func main() {
         <h3>Добавление функций для шаблонов</h3>
         Механизм конвейера передает вывод одного элемента конвейера следующему в последнем аргументе.
         <pre>
-            <code class="hljs">
+            <code class="hljs go">
 package main
 
 import (
@@ -112,7 +112,7 @@ func main() {
         <h3>Использование вложенных шаблонов</h3>
         Шаблон заголовка, включаемый в главный шаблон:
         <pre>
-            <code class="hljs">
+            <code class="hljs go">
 package main
 
 import (
@@ -155,7 +155,7 @@ func main() {
         <br>
         Когда шаблоны храняться в файлах, их можно считывать такой конструкцией: <strong>template.Must(template.ParseFiles("index.html", "header.html"))</strong>
         <pre>
-            <code class="hljs">
+            <code class="hljs go">
 package main
 
 import (
@@ -194,5 +194,13 @@ func main() {
       </p>
     </footer>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("pre code").forEach(block => {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
 </body>
 </html>

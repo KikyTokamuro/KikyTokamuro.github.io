@@ -44,19 +44,19 @@
         <br><br>
         Сначало нужно узнать, что за тип метки используется в пропуске, для этого прикладываем его к считывателю и запускаем утилиту proxmark3:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 ./proxmark3 /dev/ttyACM0</code>
         </pre>
         <br>
         Как утилита запуститься вводим:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 proxmark3> lf search</code>
         </pre>
         <br>
         После того как произойдет обнаружение пропуска, можно увидеть подобный текст:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 Checking for known tags:
 EM410x pattern found:
 EM TAG ID : 1234567890
@@ -67,13 +67,13 @@ EM TAG ID : 1234567890
         <br><br>
         Далее, запоминаем ID метки, и прикладываем к считывателю брелок, на который будем клонировать пропуск. И вводим команду:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 proxmark3> lf em 410xwrite 1234567890 1</code>
         </pre>
         <br>
         После этого можно увидеть:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 Writing T55x7 tag with UID 0x1234567890 (clock rate: 64)
 #db# Started writing T55x7 tag ...
 #db# Clock rate: 64</code>
@@ -97,5 +97,13 @@ Writing T55x7 tag with UID 0x1234567890 (clock rate: 64)
       </p>
     </footer>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("pre code").forEach(block => {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
 </body>
 </html>

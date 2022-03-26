@@ -55,32 +55,32 @@
         <br><br>
         Дальше для взаимодействия с дисплеем на Raspberry Pi нужно установить нужные библиотеки (предполагается что такие вещи как git, python-pip, python-dev, build-essential у вас уже установлены, если нет, то их тоже нужно установить):
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 sudo apt install python-imaging
 sudo pip install RPi.GPIO</code>
         </pre>
         <br>
         Так как взаимодействие с модулем экрана осуществляется по SPI, его так же нужно включить на Raspberry Pi. Для этого открываем файл “/boot/config.txt” и раскомментируем в нем строку:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 dtparam=spi=on</code>
         </pre>
         <br>
         После этого сохраняем файл и перезагружаемся командой:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 sudo reboot</code>
         </pre>
         <br>
         Чтобы проверить что SPI включено, можно воспользоваться командой:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 lsmod | grep "spi_bcm*"</code>
         </pre>
         <br>
         Дальше скачиваем и устанавливаем библиотеку для взаимодействия с дисплеем Nokia 5110:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 git clone https://github.com/adafruit/Adafruit_Nokia_LCD
 cd Adafruit_Nokia_LCD
 sudo python setup.py install</code>
@@ -90,7 +90,7 @@ sudo python setup.py install</code>
         <br><br>
         А теперь попробуем написать простенькие часы для этого дисплея:
         <pre>
-            <code class="hljs">
+            <code class="hljs python">
 #!/usr/bin/python
 
 import time
@@ -154,7 +154,7 @@ while True:
         <br>
         Запускается этот код командой:
         <pre>
-            <code class="hljs">
+            <code class="hljs bash">
 sudo python clock.py</code>
         </pre>
         <br>
@@ -172,5 +172,13 @@ sudo python clock.py</code>
       </p>
     </footer>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("pre code").forEach(block => {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
 </body>
 </html>
