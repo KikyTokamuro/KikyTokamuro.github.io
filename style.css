@@ -137,8 +137,15 @@ code.hljs {
     font-weight: 700
 }
 
-a {
-    color: #0C77D5;
+a,
+.terminal-menu li a {
+    color: var(--primary-color) !important;
+}
+
+a:hover,
+.terminal-menu li a:hover {
+    background-color: var(--primary-color) !important;
+    color: var(--invert-font-color) !important;
 }
 
 .terminal-prompt::before {
@@ -155,15 +162,4 @@ a {
       auto-fit,
       minmax(calc(var(--page-width) / 12), 1fr)
     );
-}
-
-.coffee {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.coffee-icon {
-    font-size: 40px;
-    margin-right: 10px;
 }
