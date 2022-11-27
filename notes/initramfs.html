@@ -97,7 +97,7 @@ make -j2</code>
         <br>
         Образ ядра будет лежать в /arch/x86_64/boot/bzImage.
         <br><br>
-        Дальше копируем куда-то наш initramfs и ядро, заходим в эту дерикторию и запускаем qemu:
+        Дальше копируем куда-то наш initramfs и ядро, заходим в эту директорию и запускаем qemu:
         <pre>
             <code class="hljs bash">
 qemu-system-x86_64 -kernel ./bzImage -initrd ./initramfs.cpio.gz -nographic -append "console=ttyS0"</code>
