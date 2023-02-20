@@ -36,7 +36,7 @@ func main() {
 #+END_SRC
 
 #+ATTR_HTML: :width 500 :src ../static/golang_logging.png
-[[file:~/work/orgsite/src/static/golang_logging.png]]
+[[file:~/work/KikyTokamuro.github.io/src/static/golang_logging.png]]
 
 Пример простого журналирования с записью в сетевой сокет:
 #+BEGIN_SRC go

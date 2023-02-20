@@ -4,7 +4,7 @@
 #+HTML_HEAD: <link rel="stylesheet" href="../static/org.css" />
 
 #+ATTR_HTML: :width 300 :src ../static/rpi_nokia_lcd.png
-[[file:~/work/orgsite/src/static/rpi_nokia_lcd.png]]
+[[file:~/work/KikyTokamuro.github.io/src/static/rpi_nokia_lcd.png]]
 
 Nokia 5110 LCD — это монохромный дисплей 84x48 пикселей, который использовался в старых телефонах Nokia. Основное преимущество этого дисплея — легкость в управлении.
 
@@ -20,12 +20,12 @@ Nokia 5110 LCD — это монохромный дисплей 84x48 пиксе
 8. GND — Земля.
 
 #+ATTR_HTML: :width 300 :src ../static/lcd_pins.png
-[[file:~/work/orgsite/src/static/lcd_pins.png]]
+[[file:~/work/KikyTokamuro.github.io/src/static/lcd_pins.png]]
 
 Подключение данного дисплея к Raspberry Pi осуществляется очень просто, вот по этой схеме (чтобы при подключении дисплея работала его подсветка, нужно пин LIGHT подключить на землю):
 
 #+ATTR_HTML: :width 700 :src ../static/lcd_scheme.png
-[[file:~/work/orgsite/src/static/lcd_scheme.png]]
+[[file:~/work/KikyTokamuro.github.io/src/static/lcd_scheme.png]]
 
 Дальше для взаимодействия с дисплеем на Raspberry Pi нужно установить нужные библиотеки (предполагается что такие вещи как git, python-pip, python-dev, build-essential у вас уже установлены, если нет, то их тоже нужно установить):
 #+BEGIN_SRC sh

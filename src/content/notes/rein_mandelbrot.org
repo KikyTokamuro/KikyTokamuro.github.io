@@ -43,7 +43,7 @@ $ ./rein demo/test.lua
 #+END_SRC
 
 #+ATTR_HTML: :width 500 :src ../static/rein_test.png
-[[file:~/work/orgsite/src/static/rein_test.png]]
+[[file:~/work/KikyTokamuro.github.io/src/static/rein_test.png]]
 
 Теперь можно попробовать написать простенькую демку. Для реализации я выбрал Множество Мандельброта.
 #+BEGIN_SRC lua
@@ -81,7 +81,7 @@ end
 
 Получившийся результат:
 #+ATTR_HTML: :width 500 :src ../static/rein_mandelbrot.gif
-[[file:~/work/orgsite/src/static/rein_mandelbrot.gif]]
+[[file:~/work/KikyTokamuro.github.io/src/static/rein_mandelbrot.gif]]
 
 Так же стоить отметить, что в Rein входит редактор исходного кода, редактор графики, редактор звука, а так же клиент IRC :)
 #+BEGIN_SRC sh

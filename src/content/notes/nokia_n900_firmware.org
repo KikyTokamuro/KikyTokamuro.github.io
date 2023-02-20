@@ -4,7 +4,7 @@
 #+HTML_HEAD: <link rel="stylesheet" href="../static/org.css" />
 
 #+ATTR_HTML: :width 500 :src ../static/nokia_n900_boot.png
-[[file:~/work/orgsite/src/static/nokia_n900_boot.png]]
+[[file:~/work/KikyTokamuro.github.io/src/static/nokia_n900_boot.png]]
 
 /Предупреждение: автор не несет ответственности за причиненные повреждения вашему аппарату в процессе следования данным инструкциям. Вы все делаете на свой страх и риск./
 
