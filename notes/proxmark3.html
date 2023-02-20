@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Использования Proxmark3 для клонирования пропуска через турникет</title>
+<meta name="generator" content="Org Mode" />
+<link rel="icon" href="../static/favicon.ico">
+<link rel="stylesheet" href="../static/org.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Использования Proxmark3 для клонирования пропуска через турникет</h1>
+<p>
+Пришла моя заветная посылка с “Proxmark3 Easy”. Если в кратце, то Proxmark3 — это мощный RFID инструмент, предназначенный для отслеживания, прослушивания и эмуляции всего, от низкочастотных (125 кГц) до высокочастотных (13,56 МГц) меток.
+</p>
+
+
+<div id="org85227d5" class="figure">
+<p><img src="../static/proxmark3.png" alt="proxmark3.png" width="500" />
+</p>
+</div>
+
+<p>
+Перед тем как вы продолжите читать, спешу вас предупредить: <b>Данная статья написана только для ознакомления, и ни в коем случае не призывает заниматься подделкой RFID меток, так как это противоречит УК РФ. Автор не несет ответственности за любые неправомерные действия, совершенные людьми с использованием информации из данной статьи.</b>
+</p>
+
+<p>
+Данная статья предполагает, что вы уже установили нужную прошивку на ваш Proxmark3 и умеете запускать утилиту для работы с ним, если нет то переходим <a href="https://github.com/Proxmark/proxmark3">сюда</a> и читаем.
+</p>
+
+<p>
+Ну что, приступим к исследованию RFID меток.
+</p>
+
+<p>
+В моем учебном учреждении при входе стоят турникеты, и для того, чтобы пройти нужно приложить свой пропуск. И так как я часто забывал пропуск, я решил скопировать его на брелок T5577, который шел в комплекте к Proxmark3. Подобные брелки можно найти на <a href="https://aliexpress.ru/wholesale?SearchText=t5577">AliExpress</a>.
+</p>
+
+<p>
+Сначало нужно узнать, что за тип метки используется в пропуске, для этого прикладываем его к считывателю и запускаем утилиту proxmark3:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">./proxmark3 /dev/ttyACM0
+</pre>
+</div>
+
+<p>
+Как утилита запуститься вводим:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">proxmark3&gt; lf search
+</pre>
+</div>
+
+<p>
+После того как произойдет обнаружение пропуска, можно увидеть подобный текст:
+</p>
+<pre class="example">
+Checking for known tags:
+EM410x pattern found:
+EM TAG ID : 1234567890
+...
+</pre>
+
+<p>
+В данном случае, мой пропуск оказался меткой типа EM410x с ID 1234567890 (понадобиться для копирования). EM410x — это формат RFID меток компании EM Microelectronic-Marin. Данная метка относиться к классу пассивных RFID меток, поскольку не имеет встроенного источника питания. Работает в частотном диапазоне 125 КГц.
+</p>
+
+<p>
+Далее, запоминаем ID метки, и прикладываем к считывателю брелок, на который будем клонировать пропуск. И вводим команду:
+</p>
+<pre class="example">
+proxmark3&gt; lf em 410xwrite 1234567890 1
+</pre>
+
+<p>
+После этого можно увидеть:
+</p>
+<pre class="example">
+Writing T55x7 tag with UID 0x1234567890 (clock rate: 64)
+#db# Started writing T55x7 tag ...
+#db# Clock rate: 64
+</pre>
+
+<p>
+Это говорит нам о том, что метка успешно скопировалась. Можно смело идти на учебу и проверять, заранее скажу что все отлично сработало ;)
+</p>
+
+<p>
+Ссылки на тему исследования RFID меток:
+</p>
+<ul class="org-ul">
+<li><a href="https://habr.com/ru/post/325776/">https://habr.com/ru/post/325776/</a></li>
+<li><a href="https://www.securitylab.ru/analytics/458814.php">https://www.securitylab.ru/analytics/458814.php</a></li>
+</ul>
+</div>
+<div id="postamble" class="status">
+<p class="creator">Made with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org/">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>

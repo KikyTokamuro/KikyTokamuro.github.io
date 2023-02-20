@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Перепрошивка Nokia N900</title>
+<meta name="generator" content="Org Mode" />
+<link rel="icon" href="../static/favicon.ico">
+<link rel="stylesheet" href="../static/org.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Перепрошивка Nokia N900</h1>
+
+<div id="org8af5b56" class="figure">
+<p><img src="../static/nokia_n900_boot.png" alt="nokia_n900_boot.png" width="500" />
+</p>
+</div>
+
+<p>
+<i>Предупреждение: автор не несет ответственности за причиненные повреждения вашему аппарату в процессе следования данным инструкциям. Вы все делаете на свой страх и риск.</i>
+</p>
+
+<p>
+Не так давно мне в руки попал знаменитый Nokia n900, я с ним всячески разбирался. Да так разбирался, что слетело ядро, и девайс впал в bootloop.
+Раз сломал, нужно чинить. Были найдены нужные <a href="http://talk.maemo.org/showpost.php?p=1418219&amp;postcount=13">файлы</a>, и <a href="https://wiki.maemo.org/User:Agge/Updating_the_firmware/rev2">мануал</a> по прошивке данного телефона.
+</p>
+
+<p>
+Если вкратце, то для прошивки n900, нужно 3 вещи:
+</p>
+<ol class="org-ol">
+<li>Образ FIASCO aka COMBINED — в него входит rootfs, kernel, и прошивка GSM модуля (если верить вики).</li>
+<li>Образ eMMC aka VANILLA — нужен для очистки пользовательского раздела /home (прошивку данного образа мы рассматривать не будем, так как мне это было просто не нужно. Но он прошивается почти так же как и первый).</li>
+<li>Флешер, он же flasher-3.5 — софт с помощью которого и будем прошивать.</li>
+</ol>
+
+<p>
+Образы берем от <a href="https://talk.maemo.org/showpost.php?p=1418219&amp;postcount=13">сюда</a>, а флешер можно найти <a href="https://soft.sibnet.ru/soft/22060-maemo-flasher-3-5/">тут</a>. Я флешер ставил из <a href="https://aur.archlinux.org/packages/flasher/">AUR</a>, так как от туда еще и подтянулась нужная библиотека: 
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">yaourt flasher
+</pre>
+</div>
+
+<p>
+Приступим к прошивке: <br />
+Переходим в директорию с образом прошивки, и выполняем команду (имя образа у вас может быть другим):
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">sudo flasher-3.5 -F RX-51_2009SE_20.2010.36-2.003_PR_COMBINED_003_ARM.bin -f -R
+</pre>
+</div>
+
+<p>
+Должно появится что-то на подобии:
+</p>
+<pre class="example">
+...
+Suitable USB device not found, waiting
+</pre>
+
+<p>
+Выключаем N900, зажимаем клавишу “u” на клавиатуре девайса, и только потом подключаем USB шнур.
+Если вы все правильно сделали, то на экране телефона появится значок USB, а на компьютере в терминале побегут строки с информацией о перепрошивке.
+После этих действий телефон должен перезагрузиться, и начать работать с новой прошивкой.
+</p>
+
+<p>
+Но не тут то было, у меня после выполнения этих действий, в терминале выбило ошибку (не все могут с ней столкнуться, у некоторых все отлично шьется):
+</p>
+<pre class="example">
+Error claiming USB interface: Device or resource busy...
+Suitable USB device not found, waiting
+</pre>
+
+<p>
+Решается она удалением модуля ядра:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">sudo modprobe -r cdc_phonet
+</pre>
+</div>
+
+<p>
+Вы так же можете столкнуться с другими ошибками, с их решением можно ознакомиться <a href="https://wiki.maemo.org/User:Agge/Updating_the_firmware/rev2/Trubleshooting">тут</a>. 
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="creator">Made with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org/">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>

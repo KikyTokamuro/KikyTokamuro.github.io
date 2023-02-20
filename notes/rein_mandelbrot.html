@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Рисуем Множество Мандельброта на Rein</title>
+<meta name="generator" content="Org Mode" />
+<link rel="icon" href="../static/favicon.ico">
+<link rel="stylesheet" href="../static/org.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Рисуем Множество Мандельброта на Rein</h1>
+<p>
+Нравятся мне различные минималистичные проекты, они кажутся мне очень уютными и душевными.
+</p>
+
+<p>
+<a href="https://github.com/hugeping/rein">Rein</a> как раз является одним из таких уютных проектов, позиционирует он себя как минималистичный движок для 2D-игр и демок.
+Кстати, автор Rein так же является автором довольно известного <a href="https://instead.hugeping.ru/">интерпретатора текстографических приключений Instead</a>.
+</p>
+
+<p>
+На момент написания данной заметки у Rein всего две зависимости: SDL2 и luajit.
+На моем стареньком синкпаде он собирается очень быстро:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">$ git clone https://github.com/hugeping/rein; <span class="org-builtin">cd</span> rein
+$ time make
+cc -c src/platform.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/platform.o
+cc -c src/stb_image.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/stb_image.o
+cc -c src/lua-compat.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/lua-compat.o
+cc -c src/stb_image_resize.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/stb_image_resize.o
+cc -c src/bit.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/bit.o
+cc -c src/utf.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/utf.o
+cc -c src/thread.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/thread.o
+cc -c src/main.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/main.o
+cc -c src/gfx.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/gfx.o
+cc -c src/stb_truetype.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/stb_truetype.o
+cc -c src/system.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/system.o
+cc -c src/gfx_font.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/gfx_font.o
+cc -c src/net.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/net.o
+cc -c src/zvon.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/zvon.o
+cc -c src/zvon_mixer.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/zvon_mixer.o
+cc -c src/zvon_sfx.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/zvon_sfx.o
+cc -c src/synth.c  -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span>  -o src/synth.o
+cc -I/usr/include/SDL2 -D_REENTRANT  -I/usr/include/luajit-2.1  -Wall -O3 -DVERSION=<span class="org-string">\"</span>230106<span class="org-string">\"</span> src/platform.o src/stb_image.o src/lua-compat.o src/stb_image_resize.o src/bit.o src/utf.o src/thread.o src/main.o src/gfx.o src/stb_truetype.o src/system.o src/gfx_font.o src/net.o src/zvon.o src/zvon_mixer.o src/zvon_sfx.o src/synth.o -lSDL2  -lluajit-5.1  -lm -o rein
+
+real    0m2,466s
+user    0m1,882s
+sys     0m0,559s
+</pre>
+</div>
+
+<p>
+Запускаем тестовый пример, чтобы удостоверится, что все работает:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">$ ./rein demo/test.lua
+</pre>
+</div>
+
+
+<div id="org2d56a53" class="figure">
+<p><img src="../static/rein_test.png" alt="rein_test.png" width="500" />
+</p>
+</div>
+
+<p>
+Теперь можно попробовать написать простенькую демку. Для реализации я выбрал Множество Мандельброта.
+</p>
+<div class="org-src-container">
+<pre class="src src-lua"><span class="org-keyword">local</span> <span class="org-variable-name">w</span>, <span class="org-variable-name">h</span>  = screen:size()
+<span class="org-keyword">local</span> <span class="org-variable-name">x</span>     = 0
+<span class="org-keyword">local</span> <span class="org-variable-name">fps</span>   = 0
+
+screen:clear(0)
+
+<span class="org-keyword">while</span> sys.running() <span class="org-keyword">and</span> x &lt;= w <span class="org-keyword">do</span>
+   <span class="org-keyword">for</span> <span class="org-variable-name">y</span> = 0, h <span class="org-keyword">do</span>
+      <span class="org-keyword">local</span> <span class="org-variable-name">i</span> = 0
+      <span class="org-keyword">local</span> <span class="org-variable-name">cx</span> = -1.3 + x / 500
+      <span class="org-keyword">local</span> <span class="org-variable-name">cy</span> = -0.55 + y / 500
+      <span class="org-keyword">local</span> <span class="org-variable-name">zx</span> = 0
+      <span class="org-keyword">local</span> <span class="org-variable-name">zy</span> = 0
+
+      <span class="org-keyword">while</span> (i &lt;= 255) <span class="org-keyword">and</span> (zx * zx + zy * zy) &lt; 6 <span class="org-keyword">do</span>
+         <span class="org-keyword">local</span> <span class="org-variable-name">xt</span> = zx * zy
+         zx = zx * zx - zy * zy + cx
+         zy = 2 * xt + cy;
+         i = i + 1
+      <span class="org-keyword">end</span>
+
+      screen:fill(x, y, 1, 1, {i, i*2, i*4})
+   <span class="org-keyword">end</span>
+
+   screen:clear(0, 256-8, 256, 256-8, 7)
+   gfx.printf(0, 256-7, 1, <span class="org-string">"Mandelbrot FPS:%d"</span>, fps)
+
+   x   = x + 1
+   fps = gfx.flip(1/60)
+<span class="org-keyword">end</span>
+</pre>
+</div>
+
+<p>
+Получившийся результат:
+</p>
+
+<div id="orgeac9fdf" class="figure">
+<p><img src="../static/rein_mandelbrot.gif" alt="rein_mandelbrot.gif" width="500" />
+</p>
+</div>
+
+<p>
+Так же стоить отметить, что в Rein входит редактор исходного кода, редактор графики, редактор звука, а так же клиент IRC :)
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">$ ./rein edit [file.lua]
+$ ./rein sprited
+$ ./rein voiced
+$ ./rein irc
+</pre>
+</div>
+
+<p>
+Впечатления от использования Rein складываются положительные. На него точно стоит обратить свое внимание. 
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="creator">Made with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org/">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
