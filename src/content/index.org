@@ -1,0 +1,28 @@
+#+TITLE: Kiky Page
+
+** About me
+Hey, I'm Arkhangelsky Daniil aka Kiky Tokamuro, a Software Engineer.
+
+At work, I mainly specialize in *Golang*, *Python*, *JavaScript*. But in my spare time, I like to work with *Lisp*, *C*, *C++*, and many others. 
+On weekends, I teach programming courses for children, together we analyze various problems using *Pascal* and *Python*.
+Most of my non-work focus is in Programming Language theory, Operation System theory, and Developer tooling.
+
+You can find all my projects and research on my [[https://github.com/KikyTokamuro][GitHub]].
+
+If you have a position or project (especially around **Common Lisp**, *Scheme*) that you think might fit me, please send me an [[mailto:kiky.tokamuro@yandex.ru][Email]], or give [[./cv.html][my resume]] to someone.
+
+I also occasionally post interesting posts to [[https://mastodon.social/@kikytokamuro][Mastodon]].
+
+Outside of work and Open-Source, I like to work on my house, hangout with my wife, and read. I mostly read Novels and Fantasy books, but I'll never say no to a good software or hardware book.
+
+** Notes
+- <2023-01-06 Пт> [[file:notes/rein_mandelbrot.org][Рисуем Множество Мандельброта на Rein]]
+- <2022-02-16 Ср> [[file:notes/lisp_alien.org][Lisp Alien]]
+- <2020-08-03 Пн> [[./notes/golang_crossplatform.org][Golang заметки - Кросс-платформенная компиляция]]
+- <2020-08-07 Пт> [[./notes/golang_html_template.org][Golang заметки - Работа с HTML шаблонами]]
+- <2020-06-20 Сб> [[./notes/golang_logging.org][Golang заметки - Журналирование]]
+- <2019-11-20 Ср> [[https://github.com/KikyTokamuro/Simple-Functional-Programming][Функциональное программирование в примерах]]
+- <2019-10-13 Вс> [[./notes/rpi_nokia_5110_lcd.org][Raspberry Pi + Nokia 5110 LCD = ❤]]
+- <2019-10-06 Вс> [[./notes/nokia_n900_firmware.org][Перепрошивка Nokia N900]]
+- <2019-09-13 Пт> [[./notes/initramfs.org][Созданиe initramfs]]
+- <2019-09-08 Вс> [[./notes/proxmark3.org][Использования Proxmark3 для клонирования пропуска через турникет]]

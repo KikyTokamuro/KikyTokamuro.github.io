@@ -1,0 +1,63 @@
+#+TITLE: Lisp Alien
+#+DATE: <2022-02-16 Ср>
+#+HTML_HEAD: <link rel="icon" href="../static/favicon.ico">
+#+HTML_HEAD: <link rel="stylesheet" href="../static/org.css" />
+
+/You must have JavaScript enabled to display the content in this note correctly/
+
+Once upon a time I stumbled upon a [[https://www.lisperati.com/#!The_Official_Lisp_Alien_3D_Model][Lisp Alien 3D Model]], I thought I wanted the same one, but more elaborate and with more detail accuracy.
+
+As time went on, the idea also remained somewhere in the depths of memory.
+
+And recently, [[mailto:stanislove1199@gmail.com][my friend]] told me that he began to get involved in 3D modeling. I thought this was my chance to bring my old idea to life.
+We consulted with him a bit, discussed the details, as well as how the final model should look, and he agreed to take on this project.
+
+During the implementation of the project, it was very interesting to watch how the model develops, new details appear in it, a soul appears.
+From the very beginning, we wanted to make only an alien, and it will stop there.
+
+But then we decided to add various new details to it:
+- the pedestal on which he will stand
+- flag
+- sword and shield
+- brain model inside an alien... don't ask why...
+- retro computer
+
+It turned out funny with the computer model, we took the old Macintosh as a basis, and slightly changed its name to Nushtosh (Russian speakers will appreciate the joke):
+#+ATTR_HTML: :width 700 :src ../static/nushtosh.jpg
+[[file:~/work/orgsite/src/static/nushtosh.jpg]]
+
+A small cut of the moments of creation can be seen in this animation:
+#+ATTR_HTML: :width 700 :src ../static/process.gif
+[[file:~/work/orgsite/src/static/process.gif]]
+
+It was a very interesting and fun project, the result of which we were pleased with.
+
+Lisp Alien 3D model (you can twist and see):
+#+BEGIN_EXPORT html
+<model-viewer id="alien-model" alt="Lisp Alien" src="../static/alien.glb" ar ar-modes="webxr scene-viewer quick-look" shadow-intensity="1" camera-controls></model-viewer>
+#+END_EXPORT
+
+The pedestal 3D model (you can twist and see):
+#+BEGIN_EXPORT html
+<model-viewer id="pedestal-model" alt="Pedestal" src="../static/sword.glb" ar ar-modes="webxr scene-viewer quick-look" shadow-intensity="1" camera-controls></model-viewer>
+#+END_EXPORT
+
+Ready-made renders that can be put on the desktop wallpaper:
+#+ATTR_HTML: :width 700 :src ../static/alien.png
+[[file:~/work/orgsite/src/static/alien.png]]
+
+#+ATTR_HTML: :width 700 :src ../static/sword.png
+[[file:~/work/orgsite/src/static/sword.png]]
+
+All files from this note can be found [[https://github.com/KikyTokamuro/KikyTokamuro.github.io/][here]]. 
+
+#+BEGIN_EXPORT html
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+#alien-model,
+#pedestal-model {
+   width: 100%;
+   height: 500px;
+}
+</style>
+#+END_EXPORT

@@ -1,0 +1,70 @@
+#+TITLE: Созданиe initramfs
+#+DATE: <2019-10-06 Вс>
+#+HTML_HEAD: <link rel="icon" href="../static/favicon.ico">
+#+HTML_HEAD: <link rel="stylesheet" href="../static/org.css" />
+
+Initramfs, сокращенно от “initial RAM file system”, является приемником initrd (initial ramdisk). Это cpio (copy in and out) архив исходной файловой системы, который загружается в память во время процесса запуска Linux. Linux копирует содержимое архива в rootfs (которая может быть основана на ramfs либо на tmpfs), а затем запускает init. Init предназначен для выполнения определенных задач до того, как реальная или финальная файловая система будет установлена поверх rootfs. Таким образом, initramfs должен содержать все драйвера устройств и инструменты, необходимые для установки конечной корневой файловой системы.
+
+Скачиваем busybox (вы можете скачать более новую версию):
+#+BEGIN_SRC sh
+wget https://busybox.net/downloads/busybox-1.26.2.tar.bz2
+tar -xvf busybox-1.26.2.tar.bz2
+#+END_SRC
+
+Собираем busybox из исходников:
+#+BEGIN_SRC sh
+cd busybox-1.26.2
+make defconfig
+make menuconfig
+#+END_SRC
+
+В меню Busybox Settings выбираем Build Options, и ставим галочку напротив Build BusyBox as a static binary (no shared libs). Далее указываем выходную папку для бинарников и собираем busybox.
+#+BEGIN_SRC sh
+make
+make CONFIG_PREFIX=./../busybox_rootfs install
+#+END_SRC
+
+Создаем иерархию каталогов для initramfs:
+#+BEGIN_SRC sh
+mkdir -p initramfs/{bin,dev,etc,home,mnt,proc,sys,usr}
+cd initramfs/dev
+sudo mknod sda b 8 0
+sudo mknod console c 5 1
+#+END_SRC
+
+Так же копируем все из папки busybox_rootfs в папку initramfs. Дальше создаем в корне initramfs файл init, и пишем в него следующее:
+#+BEGIN_SRC sh
+#!/bin/sh
+mount -t proc none /proc
+mount -t sysfs none /sys
+exec /bin/sh
+#+END_SRC
+
+И даем ему права на исполнение:
+#+BEGIN_SRC sh
+chmod +x init
+#+END_SRC
+
+Создаем сам initramfs: 
+#+BEGIN_SRC sh
+find . -print0 | cpio --null -ov --format=newc > initramfs.cpio
+gzip ./initramfs.cpio
+#+END_SRC
+
+Скачиваем и собираем ядро (вы можете скачать более новую версию):
+#+BEGIN_SRC sh
+wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.11.6.tar.xz
+tar -xvf linux-4.11.6.tar.xz
+make x86_64_defconfig
+make kvmconfig
+make -j2
+#+END_SRC
+
+Образ ядра будет лежать в /arch/x86_64/boot/bzImage.
+
+Дальше копируем куда-то наш initramfs и ядро, заходим в эту директорию и запускаем qemu:
+#+BEGIN_SRC sh
+qemu-system-x86_64 -kernel ./bzImage -initrd ./initramfs.cpio.gz -nographic -append "console=ttyS0"
+#+END_SRC
+
+Если все было выполнено правильно, то загрузится ядро и запустится shell. 

@@ -1,0 +1,52 @@
+#+TITLE: Перепрошивка Nokia N900
+#+DATE: <2019-10-06 Вс>
+#+HTML_HEAD: <link rel="icon" href="../static/favicon.ico">
+#+HTML_HEAD: <link rel="stylesheet" href="../static/org.css" />
+
+#+ATTR_HTML: :width 500 :src ../static/nokia_n900_boot.png
+[[file:~/work/orgsite/src/static/nokia_n900_boot.png]]
+
+/Предупреждение: автор не несет ответственности за причиненные повреждения вашему аппарату в процессе следования данным инструкциям. Вы все делаете на свой страх и риск./
+
+Не так давно мне в руки попал знаменитый Nokia n900, я с ним всячески разбирался. Да так разбирался, что слетело ядро, и девайс впал в bootloop.
+Раз сломал, нужно чинить. Были найдены нужные [[http://talk.maemo.org/showpost.php?p=1418219&postcount=13][файлы]], и [[https://wiki.maemo.org/User:Agge/Updating_the_firmware/rev2][мануал]] по прошивке данного телефона.
+
+Если вкратце, то для прошивки n900, нужно 3 вещи:
+1. Образ FIASCO aka COMBINED — в него входит rootfs, kernel, и прошивка GSM модуля (если верить вики).
+2. Образ eMMC aka VANILLA — нужен для очистки пользовательского раздела /home (прошивку данного образа мы рассматривать не будем, так как мне это было просто не нужно. Но он прошивается почти так же как и первый).
+3. Флешер, он же flasher-3.5 — софт с помощью которого и будем прошивать.
+
+Образы берем от [[https://talk.maemo.org/showpost.php?p=1418219&postcount=13][сюда]], а флешер можно найти [[https://soft.sibnet.ru/soft/22060-maemo-flasher-3-5/][тут]]. Я флешер ставил из [[https://aur.archlinux.org/packages/flasher/][AUR]], так как от туда еще и подтянулась нужная библиотека: 
+#+BEGIN_SRC sh
+yaourt flasher
+#+END_SRC
+
+Приступим к прошивке: \\
+Переходим в директорию с образом прошивки, и выполняем команду (имя образа у вас может быть другим):
+#+BEGIN_SRC sh
+sudo flasher-3.5 -F RX-51_2009SE_20.2010.36-2.003_PR_COMBINED_003_ARM.bin -f -R
+#+END_SRC
+
+Должно появится что-то на подобии:
+#+BEGIN_SRC
+...
+Suitable USB device not found, waiting
+#+END_SRC
+
+Выключаем N900, зажимаем клавишу “u” на клавиатуре девайса, и только потом подключаем USB шнур.
+Если вы все правильно сделали, то на экране телефона появится значок USB, а на компьютере в терминале побегут строки с информацией о перепрошивке.
+После этих действий телефон должен перезагрузиться, и начать работать с новой прошивкой.
+
+Но не тут то было, у меня после выполнения этих действий, в терминале выбило ошибку (не все могут с ней столкнуться, у некоторых все отлично шьется):
+#+BEGIN_SRC
+Error claiming USB interface: Device or resource busy...
+Suitable USB device not found, waiting
+#+END_SRC
+
+Решается она удалением модуля ядра:
+#+BEGIN_SRC sh
+sudo modprobe -r cdc_phonet
+#+END_SRC
+
+Вы так же можете столкнуться с другими ошибками, с их решением можно ознакомиться [[https://wiki.maemo.org/User:Agge/Updating_the_firmware/rev2/Trubleshooting][тут]]. 
+
