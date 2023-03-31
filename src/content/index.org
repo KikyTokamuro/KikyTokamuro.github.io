@@ -16,13 +16,55 @@ I also occasionally post interesting posts to [[https://mastodon.social/@kikytok
 Outside of work and Open-Source, I like to work on my house, hangout with my wife, and read. I mostly read Novels and Fantasy books, but I'll never say no to a good software or hardware book.
 
 ** Notes
-- <2023-01-06 Пт> [[file:notes/rein_mandelbrot.org][Рисуем Множество Мандельброта на Rein]]
-- <2022-02-16 Ср> [[file:notes/lisp_alien.org][Lisp Alien]]
-- <2020-08-03 Пн> [[./notes/golang_crossplatform.org][Golang заметки - Кросс-платформенная компиляция]]
+#+BEGIN_SRC emacs-lisp :results replace drawer :exports results
+  (cl-defstruct note title date path)
+
+  (cl-defmethod org-string ((n note))
+    (format "- %s %s\n"
+	    (note-date n)
+	    (org-make-link-string
+	     (note-path n)
+	     (note-title n))))
+
+  (defun my/get-keyword-key-value (kwd)
+     (let ((data (cadr kwd)))
+       (list (plist-get data :key)
+	     (plist-get data :value))))
+
+  (defun my/org-ast-get-prop (ast prop)
+      (nth 1
+       (assoc prop
+	(org-element-map ast '(keyword) #'my/get-keyword-key-value))))
+
+  (defun my/org-file-get-note-info (file)
+    (let ((org-ast (with-temp-buffer
+		     (insert-file-contents file)
+		     (org-mode)
+		     (org-element-parse-buffer))))
+      (make-note :title (my/org-ast-get-prop org-ast "TITLE")
+		 :date (my/org-ast-get-prop org-ast "DATE")
+		 :path file)))
+
+  (defun my/get-notes-list (dir)
+    (cl-sort (cl-loop for note in (directory-files dir nil directory-files-no-dot-files-regexp)
+		      collect (my/org-file-get-note-info (file-name-concat dir note)))
+	     #'org-time> :key #'note-date))
+
+    (let ((result ""))
+      (dolist (note-element (my/get-notes-alist "./notes/"))
+	(setq result (concat result (org-string note-element))))
+      result)
+#+END_SRC
+
+#+RESULTS:
+:results:
+- <2023-01-06 Пт> [[./notes/rein_mandelbrot.org][Рисуем Множество Мандельброта на Rein]]
+- <2022-02-16 Ср> [[./notes/lisp_alien.org][Lisp Alien]]
 - <2020-08-07 Пт> [[./notes/golang_html_template.org][Golang заметки - Работа с HTML шаблонами]]
+- <2020-08-03 Пн> [[./notes/golang_crossplatform.org][Golang заметки - Кросс-платформенная компиляция]]
 - <2020-06-20 Сб> [[./notes/golang_logging.org][Golang заметки - Журналирование]]
-- <2019-11-20 Ср> [[https://github.com/KikyTokamuro/Simple-Functional-Programming][Функциональное программирование в примерах]]
 - <2019-10-13 Вс> [[./notes/rpi_nokia_5110_lcd.org][Raspberry Pi + Nokia 5110 LCD = ❤]]
+- <2019-10-06 Вс> [[./notes/initramfs.org][Созданиe initramfs]]
 - <2019-10-06 Вс> [[./notes/nokia_n900_firmware.org][Перепрошивка Nokia N900]]
-- <2019-09-13 Пт> [[./notes/initramfs.org][Созданиe initramfs]]
 - <2019-09-08 Вс> [[./notes/proxmark3.org][Использования Proxmark3 для клонирования пропуска через турникет]]
+:end:
