@@ -9,7 +9,7 @@ Most of my non-work focus is in Programming Language theory, Operation System th
 
 You can find all my projects and research on my [[https://github.com/KikyTokamuro][GitHub]].
 
-If you have a position or project (especially around **Common Lisp**, *Scheme*) that you think might fit me, please send me an [[mailto:kiky.tokamuro@yandex.ru][Email]], or give [[./cv.html][my resume]] to someone.
+If you have a position or project (especially around *Common Lisp*, *Scheme*) that you think might fit me, please send me an [[mailto:kiky.tokamuro@yandex.ru][Email]], or give [[./cv.html][my resume]] to someone.
 
 I also occasionally post interesting posts to [[https://mastodon.social/@kikytokamuro][Mastodon]].
 
