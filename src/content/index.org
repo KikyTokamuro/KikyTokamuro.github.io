@@ -50,10 +50,10 @@ Outside of work and Open-Source, I like to work on my house, hangout with my wif
 		      collect (my/org-file-get-note-info (file-name-concat dir note)))
 	     #'org-time> :key #'note-date))
 
-    (let ((result ""))
-      (dolist (note-element (my/get-notes-alist "./notes/"))
-	(setq result (concat result (org-string note-element))))
-      result)
+  (let ((result ""))
+    (dolist (note-element (my/get-notes-list "./notes/"))
+      (setq result (concat result (org-string note-element))))
+    result)
 #+END_SRC
 
 #+RESULTS:
