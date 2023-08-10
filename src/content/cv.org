@@ -10,11 +10,44 @@
 *** DORREN
  *Period*: January 2023 - Now \\
  *Position*: Web Developer \\
+ *Type*: Full time \\
  *Web-Site*: [[https://dorren.ru/][https://dorren.ru/]]
 
+- Development of the server part of the access control and management system.
+- Development of firmware for the smart door controller based on FreeRTOS.
+- Development of a system for storing controller events in Flash memory.
+- Development of modules for interaction of the controller with various peripherals (LCD, SD, Camera, etc.).
+- CI setup based on Github Actions.
+- Technology stack used in development: Golang, C, C++, Make, CMake, ESP-IDF, FreeRTOS.
+
+*** INTIIT
+ *Period*: June 2023 - August 2023 \\
+ *Position*: Developer \\
+ *Type*: Contract work \\
+ *Web-Site*: [[https://intiit.ru/][https://intiit.ru/]]
+
+- Development of a geographic information system.
+- Database design.
+- Development of API request handlers.
+- Development of a user system (a system of roles, an authorization system linked to a company, a system for monitoring and limiting the number of user requests).
+- Development of a system of interaction between companies, users and cities.
+- Development of an intuitive interface for automatic collection of geoinformation data.
+- Implementation of a caching system for searching geoinformation data.
+- Setting up deployment automation and application management using containerization.
+- Technology stack used in development: Golang, JavaScript, PostgreSQL, Nginx, Grafana, Redis, Docker.
+
+*** Cheboksary Institute (branch) of Moscow Polytechnic University
+ *Period*: September 2022 - June 2023 \\
+ *Position*: Lecturer \\
+ *Type*: Contract work \\
+ *Web-Site*: [[https://polytech21.ru/][https://polytech21.ru/]]
+
+- Teaching programming courses (Python, Pascal).
+  
 *** Command F5
  *Period*: July 2021 - December 2022 \\
  *Position*: Fullstack Web Developer \\
+ *Type*: Full time \\
  *Web-Site*: [[https://cmdf5.ru/][https://cmdf5.ru/]]
 
 - Developing projects for client tasks.
@@ -27,6 +60,7 @@
 *** SPE "Dynamics"
  *Period*: November 2020 - July 2021 \\
  *Position*: Technician-programmer \\
+ *Type*: Full time \\
  *Web-Site*: [[https://www.dynamics.com.ru/][https://www.dynamics.com.ru/]]
 
 - Developing patches that add new functionality to U-Boot.
@@ -43,7 +77,7 @@
 
 * Education
 *** Moscow Polytechnic University
- *Period*: 2019 - Present \\
+ *Period*: 2019 - 2023 \\
  *Specialty*: Informatics and Computer Engineering (Bachelor of Engineering and Technology).
 
 *** Interregional Competence Center - Cheboksary Electromechanical College
@@ -51,14 +85,17 @@
  *Specialty*: Computer systems technician. 
 
 * Skills
-- Developing backends using PHP and Golang
+- Developing backends using Golang
 - Single Page Application development based on jQuery and JavaScript
-- Experience of using MySQL, SQLite, MongoDB, PostgreSQL
+- Experience of using MySQL, SQLite, MongoDB, PostgreSQL, Redis
 - Basic web design
 - Some experience in Pentesting and Bug Hunting
 - Experience of using programming languages as hobby: Common Lisp, Scheme
 - Experience in system software development for GNU/Linux using C programming language
+- Experience with build automation tools: Make, CMake
+- Basic experience in embedded software development in C/C++ and FreeRTOS
 - Experience of using version control systems: Git
+- Basic experience with Docker, Docker Compose
 - Comfortable working in a GNU/Linux environment
 - Comfortable working in GNU Emacs
 
