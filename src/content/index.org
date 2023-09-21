@@ -3,7 +3,7 @@
 ** About me
 Hey, I'm Arkhangelsky Daniil aka Kiky Tokamuro, a Software Engineer.
 
-At work, I mainly specialize in *Golang*, *Python*, *JavaScript*. But in my spare time, I like to work with *Lisp*, *C*, *C++*, and many others. 
+At work, I mainly specialize in *C*, *C++*, *Golang*. But in my spare time, I like to work with *Lisp*, *Python*, and many others. 
 On weekends, I teach programming courses for children, together we analyze various problems using *Pascal* and *Python*.
 Most of my non-work focus is in Programming Language theory, Operation System theory, and Developer tooling.
 
