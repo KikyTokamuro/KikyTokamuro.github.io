@@ -13,10 +13,17 @@
 
 (require 'use-package)
 
-(use-package htmlize)
-(use-package ox-publish)
+;; For generate static pages
+(use-package htmlize :ensure t)
+(use-package ox-publish :ensure t)
 
-(setq system-time-locale "C"
+;; For syntax highlighting
+(use-package lua-mode :ensure t)
+(use-package go-mode :ensure t)
+
+;; Publish settings
+(setq make-backup-files nil
+      system-time-locale "C"
       org-html-htmlize-output-type 'css
       org-export-date-timestamp-format "%d %B %Y"
       org-html-metadata-timestamp-format "%d %B %Y"
@@ -25,12 +32,13 @@
       org-html-head-include-default-style nil
       org-html-head "
           <link rel=\"icon\" href=\"./static/favicon.ico\">
-          <link rel=\"stylesheet\" href=\"./static/org.css\" />
+          <link rel=\"stylesheet\" href=\"./static/org.css\">
       "
       org-export-creator-string (format "Made with <a href=\"https://www.gnu.org/software/emacs/\">Emacs</a> %s (<a href=\"https://orgmode.org/\">Org</a> mode %s)"
 					emacs-version
 					(org-release)))
 
+;; Content settings
 (setq org-publish-project-alist
       `(("notes"
          :base-directory "./content/notes"
@@ -63,6 +71,7 @@
 	("kikytokamuro.space"
 	 :components ("static" "pages" "notes"))))
 
+;; Publish
 (org-publish "kikytokamuro.space" t)
 
 (provide 'publish)
