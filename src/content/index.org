@@ -58,6 +58,7 @@ Outside of work and Open-Source, I like to work on my house, hangout with my wif
 
 #+RESULTS:
 :results:
+- <2023-11-04 Сб> [[./notes/reddit_images.org][Смотрим картинки с Reddit в Emacs]]
 - <2023-01-06 Пт> [[./notes/rein_mandelbrot.org][Рисуем Множество Мандельброта на Rein]]
 - <2022-02-16 Ср> [[./notes/lisp_alien.org][Lisp Alien]]
 - <2020-08-07 Пт> [[./notes/golang_html_template.org][Golang заметки - Работа с HTML шаблонами]]
