@@ -8,7 +8,7 @@
 
 * Work experience
 *** Cheboksary Institute (branch) of Moscow Polytechnic University
- *Period*: September 2023 - Now \\
+ *Period*: September 2023 - June 2024 \\
  *Position*: Lecturer \\
  *Type*: Contract work \\
  *Web-Site*: [[https://polytech21.ru/][https://polytech21.ru/]]
@@ -16,7 +16,7 @@
 - Teaching programming courses (Python, Pascal).
 
 *** DORA
- *Period*: August 2023 - Now \\
+ *Period*: August 2023 - June 2024 \\
  *Position*: Developer \\
  *Type*: Full time \\
  *Web-Site*: [[http://dora.bz/][http://dora.bz/]]
@@ -24,7 +24,9 @@
 - Development of firmware for the smart door controller based on FreeRTOS.
 - Implementation of Modbus protocol support.
 - Implementation of Wiegand protocol support.
-- Technology stack used in development: C, C++, Make, CMake, ESP-IDF, FreeRTOS.
+- Implementation of iButton readers (1-Wire) support.
+- Development of an MVP mobile application for interaction with the controller via BLE.
+- Technology stack used in development: C, C++, Golang, Make, CMake, ESP-IDF, FreeRTOS.
 
 *** DORREN
  *Period*: January 2023 - August 2023 \\
@@ -112,8 +114,8 @@
  *Web-site*: [[http://www.chemk.org/][http://www.chemk.org/]]
 
 * Skills
-- Developing backends using Golang
-- Working with data transfer protocols: HTTP, TCP, MQTT, gRPC, Wiegand, Modbus, etc
+- Developing backends using Golang and PHP
+- Working with data transfer protocols: HTTP, TCP, MQTT, gRPC, etc
 - Single Page Application development based on jQuery and JavaScript
 - Experience of using MySQL, SQLite, MongoDB, PostgreSQL, Redis
 - Basic web design

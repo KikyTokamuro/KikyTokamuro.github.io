@@ -75,4 +75,4 @@
 (org-publish "kikytokamuro.space" t)
 
 (provide 'publish)
-;;; publish.el ends here
+;;; publish.el ends here.

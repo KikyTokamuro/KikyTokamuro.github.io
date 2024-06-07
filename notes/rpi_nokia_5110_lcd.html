@@ -14,7 +14,7 @@
 <div id="content" class="content">
 <h1 class="title">Raspberry Pi + Nokia 5110 LCD = ❤</h1>
 
-<div id="org3c5b58b" class="figure">
+<div id="org7b2f9f4" class="figure">
 <p><img src="../static/rpi_nokia_lcd.png" alt="rpi_nokia_lcd.png" width="300" />
 </p>
 </div>
@@ -39,7 +39,7 @@ Nokia 5110 LCD — это монохромный дисплей 84x48 пиксе
 </ol>
 
 
-<div id="org2eacdba" class="figure">
+<div id="org41102e3" class="figure">
 <p><img src="../static/lcd_pins.png" alt="lcd_pins.png" width="300" />
 </p>
 </div>
@@ -49,7 +49,7 @@ Nokia 5110 LCD — это монохромный дисплей 84x48 пиксе
 </p>
 
 
-<div id="org60c95aa" class="figure">
+<div id="orgce3ecca" class="figure">
 <p><img src="../static/lcd_scheme.png" alt="lcd_scheme.png" width="700" />
 </p>
 </div>
@@ -117,19 +117,19 @@ sudo python setup.py install
 <span class="org-keyword">from</span> PIL <span class="org-keyword">import</span> ImageFont
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Raspberry Pi hardware SPI config:</span>
-DC = 23
-<span class="org-variable-name">RST</span> = 24
-<span class="org-variable-name">SPI_PORT</span> = 0
-<span class="org-variable-name">SPI_DEVICE</span> = 0
+<span class="org-variable-name">DC</span> <span class="org-operator">=</span> 23
+<span class="org-variable-name">RST</span> <span class="org-operator">=</span> 24
+<span class="org-variable-name">SPI_PORT</span> <span class="org-operator">=</span> 0
+<span class="org-variable-name">SPI_DEVICE</span> <span class="org-operator">=</span> 0
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Hardware SPI usage:</span>
-disp = LCD.PCD8544(DC, RST, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz=4000000))
+<span class="org-variable-name">disp</span> <span class="org-operator">=</span> LCD.PCD8544(DC, RST, spi<span class="org-operator">=</span>SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz<span class="org-operator">=</span>4000000))
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Software SPI usage (defaults to bit-bang SPI interface):</span>
 <span class="org-comment-delimiter">#</span><span class="org-comment">disp = LCD.PCD8544(DC, RST, SCLK, DIN, CS)</span>
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Initialize library.</span>
-disp.begin(contrast=40)
+disp.begin(contrast<span class="org-operator">=</span>40)
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Clear display.</span>
 disp.clear()
@@ -137,26 +137,26 @@ disp.display()
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Create blank image for drawing.</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">Make sure to create image with mode '1' for 1-bit color.</span>
-image = Image.new(<span class="org-string">'1'</span>, (LCD.LCDWIDTH, LCD.LCDHEIGHT))
+<span class="org-variable-name">image</span> <span class="org-operator">=</span> Image.new(<span class="org-string">'1'</span>, (LCD.LCDWIDTH, LCD.LCDHEIGHT))
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Get drawing object to draw on image.</span>
-draw = ImageDraw.Draw(image)
+<span class="org-variable-name">draw</span> <span class="org-operator">=</span> ImageDraw.Draw(image)
 
 <span class="org-builtin">print</span>(<span class="org-string">'Press Ctrl-C to quit.'</span>)
 
 <span class="org-keyword">while</span> <span class="org-constant">True</span>:
     <span class="org-comment-delimiter"># </span><span class="org-comment">Get current time</span>
-    strt = datetime.now().strftime(<span class="org-string">'%H:%M:%S'</span>)
+    <span class="org-variable-name">strt</span> <span class="org-operator">=</span> datetime.now().strftime(<span class="org-string">'%H:%M:%S'</span>)
 
     <span class="org-comment-delimiter"># </span><span class="org-comment">Draw a white filled box to clear the image.</span>
-    draw.rectangle((0,0,LCD.LCDWIDTH,LCD.LCDHEIGHT), outline=255, fill=255)
+    draw.rectangle((0,0,LCD.LCDWIDTH,LCD.LCDHEIGHT), outline<span class="org-operator">=</span>255, fill<span class="org-operator">=</span>255)
 
     <span class="org-comment-delimiter"># </span><span class="org-comment">Alternatively load a TTF font.</span>
     <span class="org-comment-delimiter"># </span><span class="org-comment">Some nice fonts to try: http://www.dafont.com/bitmap.php</span>
-    font = ImageFont.truetype(<span class="org-string">'game_over.ttf'</span>, 58)
+    <span class="org-variable-name">font</span> <span class="org-operator">=</span> ImageFont.truetype(<span class="org-string">'game_over.ttf'</span>, 58)
 
     <span class="org-comment-delimiter"># </span><span class="org-comment">Write some text.</span>
-    draw.text((0,0), strt, font=font)
+    draw.text((0,0), strt, font<span class="org-operator">=</span>font)
 
     <span class="org-comment-delimiter"># </span><span class="org-comment">Display image.</span>
     disp.image(image)
@@ -180,7 +180,7 @@ draw = ImageDraw.Draw(image)
 <iframe width="100%" height="500" src="https://www.youtube.com/embed/Pj_oeo0m8-s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <div id="postamble" class="status">
-<p class="creator">Made with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org/">Org</a> mode 9.5.5)</p>
+<p class="creator">Made with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org/">Org</a> mode 9.6.15)</p>
 </div>
 </body>
 </html>
