@@ -158,11 +158,13 @@
       "templates:Вставить шаблон": false,
       "command-palette:Открыть палитру команд": false,
       "obsidian42-brat:BRAT": false,
-      "webpage-html-export:Export as HTML": false
+      "webpage-html-export:Export as HTML": false,
+      "zk-prefixer:Создать заметку с уникальным идентификатором": false
     }
   },
   "active": "8bc970282c1eed88",
   "lastOpenFiles": [
+    "Journal",
     "Notes/2019-09-08 Использования Proxmark3 для клонирования пропуска через турникет.md",
     "AliExpress.md",
     "Curriculum Vitae.md",
@@ -184,9 +186,6 @@
     "Export/site-lib/styles/snippets.css",
     "Export/site-lib/styles/obsidian.css",
     "Export/site-lib/styles/main-styles.css",
-    "Export/site-lib/styles/global-variable-styles.css",
-    "Export/site-lib/scripts/webpage.js",
-    "Export/site-lib/scripts/graph-wasm.wasm",
     "Export/site-lib/media/favicon.png",
     "Export/site-lib/media/874d8b8e340f75575caa.svg",
     "Export/site-lib/media/3d6c1bdc4d87cde4de67.svg",
