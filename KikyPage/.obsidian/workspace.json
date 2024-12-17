@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "Curriculum Vitae.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "Curriculum Vitae"
             }
           }
         ]
@@ -167,8 +167,8 @@
   },
   "active": "f7db9c1dcf229968",
   "lastOpenFiles": [
-    "index.md",
     "Curriculum Vitae.md",
+    "index.md",
     "Notes/2019-09-08 Использования Proxmark3 для клонирования пропуска через турникет.md",
     "Notes/2020-08-03 Golang заметки - Кросс-платформенная компиляция.md",
     "Notes/2020-06-20 Golang заметки - Логирование.md",

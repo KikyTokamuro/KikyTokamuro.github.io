@@ -15,6 +15,7 @@
 **Web-Site**: [https://bizzup.ru/](https://bizzup.ru/)
 - Developing projects for client tasks.
 - Developing integration with “Bitrix24”.
+- Technology stack used in development: PHP, JavaScript, JQuery, PostgreSQL.
 
 ### Cheboksary Institute (branch) of Moscow Polytechnic University
 **Period**: September 2023 - June 2024  
