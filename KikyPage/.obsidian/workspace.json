@@ -11,10 +11,14 @@
             "id": "8bc970282c1eed88",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Journal/2024/12/2024-12-18.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "title": "2024-12-18"
             }
           }
         ]
@@ -156,14 +160,16 @@
       "canvas:Создать новый холст": false,
       "daily-notes:Сегодняшняя заметка": false,
       "templates:Вставить шаблон": false,
-      "command-palette:Открыть палитру команд": false,
-      "obsidian42-brat:BRAT": false,
       "webpage-html-export:Export as HTML": false,
-      "zk-prefixer:Создать заметку с уникальным идентификатором": false
+      "zk-prefixer:Создать заметку с уникальным идентификатором": false,
+      "command-palette:Открыть палитру команд": false
     }
   },
   "active": "8bc970282c1eed88",
   "lastOpenFiles": [
+    "Journal/2024/12/2024-12-18.md",
+    "Journal/2024/12",
+    "Journal/2024",
     "Journal",
     "Notes/2019-09-08 Использования Proxmark3 для клонирования пропуска через турникет.md",
     "AliExpress.md",
