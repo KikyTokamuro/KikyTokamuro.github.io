@@ -12,6 +12,7 @@
     "inlineHTML": false,
     "exportPath": "D:\\work\\KikyTokamuro.github.io",
     "filesToExport": [
+      "Journal",
       "Notes",
       "Curriculum Vitae.md",
       "index.md"
@@ -209,7 +210,7 @@
   "onlyExportModified": true,
   "deleteOldFiles": true,
   "exportPreset": "online",
-  "openAfterExport": true,
+  "openAfterExport": false,
   "filePickerBlacklist": [
     "(^|\\/)node_modules\\/",
     "(^|\\/)dist\\/",

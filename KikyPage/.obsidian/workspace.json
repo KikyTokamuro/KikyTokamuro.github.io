@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "a7819c3b1a6a1412",
+        "id": "4e722fd8d0bb2f4c",
         "type": "tabs",
         "children": [
           {
-            "id": "8bc970282c1eed88",
+            "id": "b81c86c6a6c8d19d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Journal/2024/12/2024-12-18.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "2024-12-18"
+              "title": "Новая вкладка"
             }
           }
         ]
@@ -165,9 +161,14 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "8bc970282c1eed88",
+  "active": "b81c86c6a6c8d19d",
   "lastOpenFiles": [
+    "Journal/2025/02/2025-02-20.md",
+    "attachments/Pasted image 20250220152742.png",
     "Journal/2024/12/2024-12-18.md",
+    "Journal/2025/02",
+    "Journal/2025",
+    "202502201520.md",
     "Journal/2024/12",
     "Journal/2024",
     "Journal",
@@ -190,8 +191,6 @@
     "Export/site-lib/search-index.json",
     "Export/site-lib/metadata.json",
     "Export/site-lib/styles/snippets.css",
-    "Export/site-lib/styles/obsidian.css",
-    "Export/site-lib/styles/main-styles.css",
     "Export/site-lib/media/favicon.png",
     "Export/site-lib/media/874d8b8e340f75575caa.svg",
     "Export/site-lib/media/3d6c1bdc4d87cde4de67.svg",
@@ -201,7 +200,6 @@
     "Export/attachments/pasted-image-20241217142636.png",
     "Export/attachments/pasted-image-20241217132218.png",
     "Export/attachments/pasted-image-20241217132156.png",
-    "Export/attachments/pasted-image-20241217132114.png",
     "Добро пожаловать.md"
   ]
 }
