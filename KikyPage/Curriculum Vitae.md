@@ -13,8 +13,16 @@
 **Position**: Tech Lead / Developer
 **Type**: Full time
 **Web-Site**: [https://bizzup.ru/](https://bizzup.ru/)
-- Developing projects for client tasks.
-- Developing integration with “Bitrix24”.
+- Conducting code reviews;
+- Writing technical documentation;
+- Developing projects for client tasks;
+- Developing an application for creating short links (https://www.bitrix24.ru/apps/app/bizzup.sokrati_ssylku_robot_dlya_crm/);
+- Developing an application for closing leads based on data from https://imot.io/ ;
+- Integrating medical information systems with Bitrix24:
+	- Developing integration with Archimed+ (https://archimed.pro/);
+	- Finalizing integration with Klinikon (https://sqns.ru/);
+	- Finalizing integration with Infoklinika (https://infoclinica.ru/);
+	- Finalizing integration with D4W (https://d4w.ru/);
 - Technology stack used in development: PHP, JavaScript, JQuery, PostgreSQL.
 
 ### Cheboksary Institute (branch) of Moscow Polytechnic University
