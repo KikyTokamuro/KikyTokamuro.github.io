@@ -10,7 +10,7 @@
     "postProcess": true,
     "displayProgress": true,
     "inlineHTML": false,
-    "exportPath": "D:\\work\\KikyTokamuro.github.io",
+    "exportPath": "/Users/daniil/work/KikyTokamuro.github.io",
     "filesToExport": [
       "Journal",
       "Notes",

@@ -20,6 +20,8 @@
 - Developing an application for closing leads based on data from https://imot.io/ ;
 - Integrating medical information systems with Bitrix24:
 	- Developing integration with Archimed+ (https://archimed.pro/);
+	- Developing integration with Medods (https://medods.ru/);
+	- Developing integration with Renovatio (https://rnova.ru/);
 	- Finalizing integration with Klinikon (https://sqns.ru/);
 	- Finalizing integration with Infoklinika (https://infoclinica.ru/);
 	- Finalizing integration with D4W (https://d4w.ru/);
@@ -32,29 +34,21 @@
 **Web-Site**: [https://polytech21.ru/](https://polytech21.ru/)
 - Teaching programming courses (Python, Pascal).
 
-### DORA
-**Period**: August 2023 - June 2024  
-**Position**: Developer 
-**Type**: Full time 
-**Web-Site**: [http://dora.bz/](http://dora.bz/)
-- Development of firmware for the smart door controller based on FreeRTOS.
-- Implementation of Modbus protocol support.
-- Implementation of Wiegand protocol support.
-- Implementation of iButton readers (1-Wire) support.
-- Development of an MVP mobile application for interaction with the controller via BLE.
-- Technology stack used in development: C, C++, Golang, Make, CMake, ESP-IDF, FreeRTOS.
-
 ### DORREN
-**Period**: January 2023 - August 2023  
-**Position**: Web Developer 
+**Period**: January 2023 - June 2024  
+**Position**: Developer 
 **Type**: Full time 
 **Web-Site**: [https://dorren.ru/](https://dorren.ru/)
 - Development of the server part of the access control and management system.
 - Development of firmware for the smart door controller based on FreeRTOS.
 - Development of a system for storing controller events in Flash memory.
+- Implementation of Modbus protocol support.
+- Implementation of Wiegand protocol support.
+- Implementation of iButton readers (1-Wire) support.
 - Development of modules for interaction of the controller with various peripherals (LCD, SD, Camera, etc.).
+- Development of an MVP mobile application for interaction with the controller via BLE.
 - CI setup based on Github Actions.
-- Technology stack used in development: Golang, C, C++, Make, CMake, ESP-IDF, FreeRTOS.
+- Technology stack used in development: Dart, C, C++, Golang, Make, CMake, ESP-IDF, FreeRTOS.
 
 ### INTIIT
 **Period**: June 2023 - August 2023  
