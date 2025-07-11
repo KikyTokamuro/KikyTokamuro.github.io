@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Curriculum Vitae.md",
+                "file": "Notes/2025-07-11 Код красный - редфлаги в IT-компании.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Curriculum Vitae"
+              "title": "2025-07-11 Код красный - редфлаги в IT-компании"
             }
           }
         ]
@@ -168,19 +168,20 @@
   },
   "active": "b81c86c6a6c8d19d",
   "lastOpenFiles": [
-    "Journal/2025/02/2025-02-20.md",
-    "Journal/2024/12/2024-12-18.md",
-    "Notes/2019-09-08 Использования Proxmark3 для клонирования пропуска через турникет.md",
-    "Notes/2019-10-13 Raspberry Pi + Nokia 5110 LCD = ❤.md",
+    "Notes/2025-07-11 Код красный - редфлаги в IT-компании.md",
+    "index.md",
+    "Notes/2020-08-03 Golang заметки - Кросс-платформенная компиляция.md",
+    "Notes/2020-06-20 Golang заметки - Логирование.md",
     "Notes/2019-10-06 Созданиe initramfs.md",
     "Notes/2019-10-06 Перепрошивка Nokia N900.md",
     "Notes/2020-08-07 Golang заметки - Работа с HTML шаблонами.md",
-    "Notes/2020-08-03 Golang заметки - Кросс-платформенная компиляция.md",
-    "Notes/2020-06-20 Golang заметки - Логирование.md",
-    "Notes/2023-01-06 Рисуем Множество Мандельброта на Rein.md",
+    "Notes/2019-10-13 Raspberry Pi + Nokia 5110 LCD = ❤.md",
     "Notes/2022-02-16 Lisp Alien.md",
+    "Notes/2023-01-06 Рисуем Множество Мандельброта на Rein.md",
     "Notes/2023-11-04 Смотрим картинки с Reddit в Emacs.md",
-    "index.md",
+    "Notes/2019-09-08 Использования Proxmark3 для клонирования пропуска через турникет.md",
+    "Journal/2024/12/2024-12-18.md",
+    "Journal/2025/02/2025-02-20.md",
     "Curriculum Vitae.md",
     "attachments/Pasted image 20250220152742.png",
     "Journal/2025/02",
