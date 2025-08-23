@@ -9,3 +9,9 @@ If you have a position or project that you think might fit me, please send me an
 I also occasionally post interesting posts to [Mastodon](https://mastodon.social/@kikytokamuro).
 
 Outside of work and Open-Source, I like to work on my house, hangout with my wife, and read. I mostly read Novels and Fantasy books, but I’ll never say no to a good software or hardware book.
+
+## Notes
+```dataview
+LIST FROM "Notes" SORT file.name DESC
+```
+

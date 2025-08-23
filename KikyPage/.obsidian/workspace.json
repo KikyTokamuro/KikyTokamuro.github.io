@@ -4,21 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "4e722fd8d0bb2f4c",
+        "id": "7fa60b6bcd73fbc7",
         "type": "tabs",
         "children": [
           {
-            "id": "b81c86c6a6c8d19d",
+            "id": "b9b7cc2d3f049e3c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/2025-07-11 Код красный - редфлаги в IT-компании.md",
+                "file": "Curriculum Vitae.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2025-07-11 Код красный - редфлаги в IT-компании"
+              "title": "Curriculum Vitae"
             }
           }
         ]
@@ -140,10 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "index.md"
+                "file": "Untitled.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Структура index"
+              "title": "Outline of Untitled"
             }
           }
         ],
@@ -156,6 +160,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -166,46 +171,50 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "b81c86c6a6c8d19d",
+  "active": "b9b7cc2d3f049e3c",
   "lastOpenFiles": [
-    "Notes/2025-07-11 Код красный - редфлаги в IT-компании.md",
-    "Notes/2023-11-04 Смотрим картинки с Reddit в Emacs.md",
-    "index.md",
-    "Notes/2020-08-03 Golang заметки - Кросс-платформенная компиляция.md",
-    "Notes/2020-06-20 Golang заметки - Логирование.md",
-    "Notes/2019-10-06 Созданиe initramfs.md",
-    "Notes/2019-10-06 Перепрошивка Nokia N900.md",
-    "Notes/2020-08-07 Golang заметки - Работа с HTML шаблонами.md",
-    "Notes/2019-10-13 Raspberry Pi + Nokia 5110 LCD = ❤.md",
-    "Notes/2022-02-16 Lisp Alien.md",
-    "Notes/2023-01-06 Рисуем Множество Мандельброта на Rein.md",
-    "Notes/2019-09-08 Использования Proxmark3 для клонирования пропуска через турникет.md",
-    "Journal/2024/12/2024-12-18.md",
-    "Journal/2025/02/2025-02-20.md",
     "Curriculum Vitae.md",
+    "index.md",
+    "Notes/2020/2020-08-03 Golang заметки - Кросс-платформенная компиляция.md",
+    "Notes/2020/2020-06-20 Golang заметки - Логирование.md",
+    "Notes/2019/2019-10-06 Созданиe initramfs.md",
+    "Notes/2019/2019-10-06 Перепрошивка Nokia N900.md",
+    "Notes/2020/2020-08-07 Golang заметки - Работа с HTML шаблонами.md",
+    "Notes/2019/2019-10-13 Raspberry Pi + Nokia 5110 LCD = ❤.md",
+    "Notes/2022/2022-02-16 Lisp Alien.md",
+    "Notes/2023/2023-01-06 Рисуем Множество Мандельброта на Rein.md",
+    "Notes/2023/2023-11-04 Смотрим картинки с Reddit в Emacs.md",
+    "Notes/2019/2019-09-08 Использования Proxmark3 для клонирования пропуска через турникет.md",
+    "Notes/2024/2024-12-18 Emacs Lisp как язык общего назначения.md",
+    "Notes/2025/2025-02-20 Первое знакомство с Elm.md",
+    "Notes/2025/2025-07-11 Код красный - редфлаги в IT-компании.md",
+    "Notes/2025/2025-08-23 The Anvil Text Editor.md",
+    "Notes/2024",
+    "Notes/2023",
+    "Notes/2022",
+    "Notes/2020",
+    "Notes/2019",
+    "Notes/2025/2025-08-23.md",
+    "Notes/2025",
+    "attachments/Pasted image 20250823141905.png",
+    "attachments/Pasted image 20250823141832.png",
+    "attachments/Pasted image 20250823141827.png",
+    "202508231356.md",
+    "Journal/2025/08",
+    "Untitled.canvas",
     "attachments/Pasted image 20250220152742.png",
     "Journal/2025/02",
     "Journal/2025",
     "202502201520.md",
     "Journal/2024/12",
-    "Journal/2024",
-    "Journal",
     "AliExpress.md",
     "2024-12-17.md",
-    "attachments/favicon.ico",
-    "attachments/favicon.ico.crdownload",
-    "Export/site-lib/search-index.json",
-    "Export/site-lib/metadata.json",
-    "Export/site-lib/styles/snippets.css",
     "Export/site-lib/media/favicon.png",
     "Export/site-lib/media/874d8b8e340f75575caa.svg",
     "Export/site-lib/media/3d6c1bdc4d87cde4de67.svg",
     "Export/attachments/rein_mandelbrot.gif",
     "Export/attachments/process.gif",
     "Export/attachments/pasted-image-20241217143050.png",
-    "Export/attachments/pasted-image-20241217142636.png",
-    "Export/attachments/pasted-image-20241217132218.png",
-    "Export/attachments/pasted-image-20241217132156.png",
     "Добро пожаловать.md"
   ]
 }

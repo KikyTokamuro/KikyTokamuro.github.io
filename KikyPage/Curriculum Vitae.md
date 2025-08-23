@@ -2,14 +2,20 @@
 | **Name**          | Archangelsky Daniil                                                |
 | ----------------- | ------------------------------------------------------------------ |
 | **Date of birth** | 22.01.2000                                                         |
-| **Location**      | Russia, Cheboksary                                                 |
+| **Location**      | Russia, Moscow                                                     |
 | **Email**         | [kiky.tokamuro@yandex.ru](mailto:kiky.tokamuro@yandex.ru)          |
 | **Code**          | [https://github.com/KikyTokamuro](https://github.com/KikyTokamuro) |
 
 # Work experience
 ---
+### Federal Center for Disaster Medicine. FSBI "NMHC named after N. I. Pirogov" Ministry of Health of the Russian Federation
+**Period**: August 2025 - Currently
+**Position**: Lead Software Engineer
+**Type**: Full time
+**Web-Site**: [https://fcmk.minzdrav.gov.ru/](https://fcmk.minzdrav.gov.ru/)
+
 ### BIZZUP
-**Period**: June 2024 - Currently  
+**Period**: June 2024 - July 2025
 **Position**: Tech Lead / Developer
 **Type**: Full time
 **Web-Site**: [https://bizzup.ru/](https://bizzup.ru/)
