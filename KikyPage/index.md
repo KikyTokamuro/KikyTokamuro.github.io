@@ -1,6 +1,6 @@
 Hey, I’m Arkhangelsky Daniil aka Kiky Tokamuro, a Software Engineer.
 
-At work, I mainly specialize in **C**, **PHP**, **Golang**. But in my spare time, I like to work with **Lisp**, **Python**, and many others. Most of my non-work focus is in Programming Language theory, Operation System theory, and Developer tooling.
+At work, I mainly specialize in **C**, **PHP**, **Golang**. But in my spare time, I like to work with **Lisp**, **Smalltalk**, and many others. Most of my non-work focus is in Programming Language theory, Operation System theory, and Developer tooling.
 
 You can find all my projects and research on my [GitHub](https://github.com/KikyTokamuro).
 

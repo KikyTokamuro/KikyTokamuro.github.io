@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/2026/2026-03-25 Знакомство с Cuis Smalltalk.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2026-03-25 Знакомство с Cuis Smalltalk"
+              "title": "index"
             }
           }
         ]
@@ -173,9 +173,9 @@
   },
   "active": "582a08dbfff4e59b",
   "lastOpenFiles": [
-    "Notes/2026/2026-03-25 Цветовая схема Monokai для Anvil Text Editor.md",
     "index.md",
     "Notes/2026/2026-03-25 Знакомство с Cuis Smalltalk.md",
+    "Notes/2026/2026-03-25 Цветовая схема Monokai для Anvil Text Editor.md",
     "attachments/Pasted image 20260325095152.png",
     "attachments/Pasted image 20260325095056.png",
     "Notes/2025/2025-08-23 The Anvil Text Editor.md",
